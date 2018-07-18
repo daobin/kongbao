@@ -1,0 +1,27 @@
+<div class="container">
+    {notempty name="distributor_list"}
+    <div class="row">
+        <table class="table table-bordered">
+            <tr>
+                <th class="text-center">ID</th>
+                <th class="text-center">分站域名</th>
+                <th class="text-center">分站后台账号</th>
+                <th class="text-center">操作</th>
+            </tr>
+            {volist name="distributor_list" id="distributor"}
+            <tr>
+                <td class="text-center">{$distributor.distributor_id}</td>
+                <td class="text-center">{$distributor.site_domain}</td>
+                <td class="text-center">{$distributor.admin_account}</td>
+                <td class="text-center">
+                    <a href="{:url('admin/distributor/edit', 'distributor_id='.$distributor.distributor_id)}" title="编辑">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                </td>
+            </tr>
+            {/volist}
+        </table>
+        {$distributor_list->render()}
+    </div>
+    {/notempty}
+</div>

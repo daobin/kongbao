@@ -1,0 +1,29 @@
+<div id="sideBar2">
+    <div class="sideBox2">
+        <h3>管理中心</h3>
+        <div class="sideMenu">
+            {notempty name="$routes"}
+            <ul>
+                {volist name="center_navs" id="group_nav"}
+                    {if condition="isset($routes[$group_nav['group_key']])"}
+                <li>
+                    <a>{$group_nav.group_name}</a>
+                    <ul>
+                        {volist name="group_nav.navs" id="route_nav"}
+                            {if condition="isset($routes[$group_nav['group_key']][$route_nav['route']])"}
+                        <li>
+                            <a href="{:url($route_nav.route)}">
+                                {$route_nav.name}
+                            </a>
+                        </li>
+                            {/if}
+                        {/volist}
+                    </ul>
+                </li>
+                    {/if}
+                {/volist}
+            </ul>
+            {/notempty}
+        </div>
+    </div>
+</div>

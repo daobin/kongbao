@@ -1,0 +1,126 @@
+<div id="pageBody">
+    {:widget('user/sidebar')}
+    <div id="mainBody2">
+        <div class="mainBox2">
+            <h3>消费记录</h3>
+            <div class="content">
+                <table class="tab" width="100%" cellspacing="0" cellpadding="0" border="0">
+                    <tbody>
+                    <tr>
+                        <td align="right">消费时间：
+                            <input id="startdate" name="startdate"
+                                   onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',lang:'zh-cn'})" class="Wdate inp" value=""
+                                   style="width:150px" type="text">
+                            到
+                            <input id="enddate" name="enddate"
+                                   onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',lang:'zh-cn'})" class="Wdate inp" value=""
+                                   style="width:150px" type="text">
+
+                            <select id="classId" name="classId">
+                                <option value="0">消费类型</option>
+                                <option value="1">充值</option>
+                                <option value="2">购买空包</option>
+                                <option value="3">购买流量</option>
+                                <option value="4">购买收藏</option>
+                                <option value="5">升级VIP</option>
+                                <option value="6">升级代理</option>
+                                <option value="7">奖励</option>
+                                <option value="8">退款</option>
+                                <option value="9">官方</option>
+                            </select>
+                            <input class="btn" id="btn_search" value="查询" type="button"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="tab2" width="100%" cellspacing="0" cellpadding="0" border="0">
+                    <tbody>
+                    <tr>
+                        <th width="40%"> 消费内容</th>
+                        <th width="10%"> 类型</th>
+                        <th width="10%"> 金额</th>
+                        <th width="10%"> 余额</th>
+                        <th width="15%"> 时间</th>
+                    </tr>
+
+
+                    </tbody>
+                    <tbody id="pageBox">
+                    <tr>
+                        <td style="display:none"><input value="31" id="nums" type="hidden"></td>
+                    </tr>
+                    <tr>
+                        <td>消费1.60元，购买流量</td>
+                        <td>官方</td>
+                        <td>1.60</td>
+                        <td>99.80</td>
+                        <td>2018/7/14 15:45:09</td>
+                    </tr>
+                    <tr>
+                        <td>消费1.60元，购买流量</td>
+                        <td>官方</td>
+                        <td>1.60</td>
+                        <td>101.40</td>
+                        <td>2018/7/14 15:42:47</td>
+                    </tr>
+                    <tr>
+                        <td>网站测试使用</td>
+                        <td>官方</td>
+                        <td>100.00</td>
+                        <td>103.00</td>
+                        <td>2018/7/14 15:18:58</td>
+                    </tr>
+                    <tr>
+                        <td>消费7.00元，购买流量</td>
+                        <td>官方</td>
+                        <td>7.00</td>
+                        <td>3.00</td>
+                        <td>2018/7/14 15:15:21</td>
+                    </tr>
+                    <tr>
+                        <td>流量订单取消，退款1.60元</td>
+                        <td>官方</td>
+                        <td>1.60</td>
+                        <td>10.00</td>
+                        <td>2018/7/14 14:58:23</td>
+                    </tr>
+                    <tr>
+                        <td>消费1.60元，购买流量</td>
+                        <td>官方</td>
+                        <td>1.60</td>
+                        <td>8.40</td>
+                        <td>2018/7/14 14:57:18</td>
+                    </tr>
+                    <tr>
+                        <td>由于信息填写错误 网站管理员取消了您购买的单号，购买金额1.95元，已经退回您的账户</td>
+                        <td>退款</td>
+                        <td>1.95</td>
+                        <td>10.00</td>
+                        <td>2018/7/12 21:15:52</td>
+                    </tr>
+                    <tr>
+                        <td>购买空包</td>
+                        <td>购买</td>
+                        <td>1.95</td>
+                        <td>8.05</td>
+                        <td>2018/7/12 21:15:37</td>
+                    </tr>
+                    <tr>
+                        <td>由于信息填写错误 网站管理员取消了您购买的单号，购买金额1.55元，已经退回您的账户</td>
+                        <td>退款</td>
+                        <td>1.55</td>
+                        <td>10.00</td>
+                        <td>2018/7/12 21:10:33</td>
+                    </tr>
+                    <tr>
+                        <td>由于信息填写错误 网站管理员取消了您购买的单号，购买金额1.95元，已经退回您的账户</td>
+                        <td>退款</td>
+                        <td>1.95</td>
+                        <td>8.45</td>
+                        <td>2018/7/12 21:10:28</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

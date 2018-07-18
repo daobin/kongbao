@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row">
+        <form method="post" autocomplete="off">
+            <div class="form-group">
+                <label>会员账号</label>
+                <input class="form-control" type="text" value="{$user.user_account}" disabled />
+            </div>
+            <div class="form-group">
+                <label>会员等级</label>
+                <select class="form-control" name="user_level_id">
+                    {volist name="user_levels" id="level"}
+                        {php}
+                        $selected = '';
+                        if((int)$user['user_level_id'] == (int)$level['user_level_id']){
+                            $selected = ' selected ';
+                        }
+                        {/php}
+                    <option {$selected} value="{$level.user_level_id}">{$level.level_name}</option>
+                    {/volist}
+                </select>
+            </div>
+            <div class="form-group">
+                <label>会员密码</label>
+                <input class="form-control dv_word" type="password" maxlength="30"
+                       name="user_password" placeholder="可不填写，填写则表示重置密码" />
+            </div>
+            <div class="form-group">
+                <label>会员QQ</label>
+                <input class="form-control" type="text" maxlength="16"
+                       name="qq_number" value="{$user.qq_number}" />
+            </div>
+            <div class="form-group">
+                <label>会员邮箱</label>
+                <input class="form-control" type="text" maxlength="60"
+                       name="email_address" value="{$user.email_address}" />
+            </div>
+            <div class="form-group">
+                <label>会员电话</label>
+                <input class="form-control" type="text" maxlength="16"
+                       name="telephone" value="{$user.telephone}" />
+            </div>
+            <div class="form-group">
+                <label>推荐人</label>
+                <input class="form-control" type="text"
+                       value="{$user.recommend_user_id_info.user_account}" disabled />
+            </div>
+            <div class="form-group margin-top30">
+                <input type="hidden" name="user_id" value="{$user.user_id}" />
+                <input class="btn btn-primary" type="submit" value="保存" />
+                <span class="padding-right20"></span>
+                <a href="{:url('admin/user/index')}">
+                    <input type="button" class="btn btn-info" value="返回列表页" />
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

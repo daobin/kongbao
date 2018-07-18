@@ -1,0 +1,98 @@
+<div id="pageBody">
+    {:widget('user/sidebar')}
+    <div id="mainBody2">
+        <div class="mainBox2">
+            <h3> 设置您的发货地址 </h3>
+            <div class="content">
+                {notempty name="page_text"}
+                <div class="notice3">{$page_text.description}</div>
+                {/notempty}
+
+                <form id="address_form" autocomplete="off">
+                    <table class="tab" width="100%" cellspacing="0" cellpadding="0" border="0">
+                        <tbody>
+                        <tr>
+                            <td>发货人姓名：</td>
+                            <td width="618">
+                                <input name="name" size="40" type="text"
+                                       class="input validate[required,minSize[2],maxSize[30]]"
+                                       data-errormessage-value-missing="发货人姓名字符长度错误"/>
+                                <span style="color:#999999;">请输入姓名，2-30个字符长度</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>发货人电话：</td>
+                            <td>
+                                <input name="telephone" size="40" type="text"
+                                       class="input validate[required,custom[checkPhone]]"/>
+                                <span style="color:#999999;">请输入联系电话</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="116">发货人城市：</td>
+                            <td>
+                                <input type="hidden" id="J_province_id" name="province_id" value="0"/>
+                                <select id="J_province" name="province_name" class="validate[required]"
+                                        data-errormessage-value-missing="请选择省份">
+                                    <option data-provinceid="" value="">省份</option>
+                                    {volist name="provinces" id="province"}
+                                    <option data-provinceid="{$province.province_id}"
+                                            value="{$province.province_name}">{$province.province_name}
+                                    </option>
+                                    {/volist}
+                                </select>
+                                <input type="hidden" id="J_city_id" name="city_id" value="0"/>
+                                <select id="J_city" name="city_name" class="validate[required]"
+                                        data-errormessage-value-missing="请选择城市">
+                                    <option data-cityid="" value="">城市</option>
+                                </select>
+                                <input type="hidden" id="J_district_id" name="district_id" value="0"/>
+                                <select id="J_district" name="district_name" class="validate[required]"
+                                        data-errormessage-value-missing="请选择区县">
+                                    <option data-districtid="" value="">区县</option>
+                                </select>
+                                <span style="color:#999999;">请选择省份、城市、区县</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>详细地址：</td>
+                            <td>
+                                <input name="address" size="40" type="text"
+                                       class="input validate[required,minSize[3],maxSize[30]]"
+                                       data-errormessage-value-missing="收货地址字符长度错误"/>
+                                <span style="color:#999999;">请输入详细地址，3-30个字符长度</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td><input class="btn" value="确定添加" type="submit"/></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+                <div style="margin-top: 30px; margin-bottom: 15px;">
+                    <input type="hidden" id="J_search_keywords" value=""/>
+                    <input type="hidden" id="J_search_page" value="1"/>
+                    <input type="text" id="J_search_keywords_tmp" style="width:360px;height:28px"
+                           placeholder="请输入姓名，电话或地址"/>
+                    &nbsp;
+                    <input value="搜索" style="width:100px;height:30px"
+                           class="btn_check" id="J_search_btn" type="button"/>
+                </div>
+                <div id="J_address_list">
+                    <table class="tab2" width="100%" cellspacing="0" cellpadding="0" border="0">
+                        <tr>
+                            <th width="14%"> 发货人姓名</th>
+                            <th width="40%"> 发货地址</th>
+                            <th width="20%"> 发货人电话</th>
+                            <th width="16%"> 状态</th>
+                            <th width="9%"> 操作</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{$Think.config.__URI_PUB_STATIC__}index/js/address.js{$Think.config.__TIMESTAMP__}"></script>
+<script src="{$Think.config.__URI_PUB_STATIC__}index/js/shipping_address.js{$Think.config.__TIMESTAMP__}"></script>

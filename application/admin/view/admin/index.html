@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        {notempty name="admin_list"}
+        <table class="table table-bordered">
+            <tr>
+                <th class="text-center">ID</th>
+                <th class="text-center">账号</th>
+                <th class="text-center">最后登录时间</th>
+                <th class="text-center">最后更新时间</th>
+                <th class="text-center">操作</th>
+            </tr>
+            {volist name="admin_list" id="admin"}
+            <tr>
+                <td class="text-center">{$admin.admin_id}</td>
+                <td class="text-center">{$admin.account}</td>
+                <td class="text-center">{$admin.gmt_login}</td>
+                <td class="text-center">{$admin.gmt_modify}</td>
+                <td class="text-center">
+                    <a href="{:url('admin/admin/edit', 'admin_id='.$admin.admin_id)}" title="编辑">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                </td>
+            </tr>
+            {/volist}
+        </table>
+        {$admin_list->render()}
+        {/notempty}
+    </div>
+</div>

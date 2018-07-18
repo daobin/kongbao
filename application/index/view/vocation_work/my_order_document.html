@@ -1,0 +1,47 @@
+<div id="pageBody">
+    {:widget('user/sidebar')}
+    <div id="mainBody2">
+        <div class="mainBox2">
+            <h3>我的底单</h3>
+            <div class="content">
+                <form method="post" action="xfrecord.asp">
+                    <table class="tab" width="100%" cellspacing="0" cellpadding="0" border="0">
+                        <tbody><tr>
+                            <td align="right">时间：
+                                <input id="startdate" name="startdate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',lang:'zh-cn'})" class="Wdate inp" value="" style="width:150px" type="text">
+                                到
+                                <input id="enddate" name="enddate" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',lang:'zh-cn'})" class="Wdate inp" value="" style="width:150px" type="text">
+                                <input name="button" class="btn" id="btn_search" value="查询" type="button"></td>
+                        </tr>
+                        </tbody></table>
+                </form>
+                <table class="tab2" width="100%" cellspacing="0" cellpadding="0" border="0">
+                    <tbody><tr>
+                        <th width="20%"> 底单类型 </th>
+                        <th width="20%"> 数量 </th>
+                        <th width="20%"> 提交时间 </th>
+                        <th width="20%"> 下载 </th>
+                        <th width="20%"> 操作 </th>
+                    </tr>
+                    </tbody><tbody id="pageBox"><input value="0" id="nums" type="hidden"></tbody>
+                </table>
+                <div class="page page2">
+                    <span><span id="pageNum">1</span>/<span id="pages">0</span>页(共<span id="count">0</span>条)</span>
+                    <a class="cur" href="#dest" id="prev">上一页</a>
+                    <span id="pageBtn"></span>
+                    <a class="cur" href="#dest" id="next">下一页</a>
+                </div>
+                <form id="formPage">
+                    <!--必须参数-->
+                    <input id="pageUrl" value="/PageAjax/MyDidan" type="hidden">
+                    <input id="limit" name="limit" value="10" type="hidden">
+                    <input id="page" name="page" value="1" type="hidden">
+                    <!--自定义参数-->
+                    <input id="hidd_DepDate" name="depDate" value="" type="hidden">
+                    <input id="hidd_EndDate" name="endDate" value="" type="hidden">
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

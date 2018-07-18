@@ -1,0 +1,175 @@
+<div id="pageBody">
+    {:widget('user/sidebar')}
+    <div id="mainBody2">
+        <div class="mainBox2">
+            <h3>在线自助购买收藏 </h3>
+            <div class="content">
+                <div class="notice3"><p><span style="color:#FF0000;"><strong><span style="font-size:14px;">宝贝收藏：增加产品的宝贝收藏量。</span></strong></span></p>
+
+                    <p><br>
+                        <span style="color:#FF0000;"><strong><span style="font-size:14px;">收藏店铺：收藏店铺增加店铺的粉丝，掉量不补。</span></strong></span></p>
+
+                    <p><br>
+                        <span style="color:#FF0000;"><strong><span style="font-size:14px;">购物车：增加产品买家加入购物车的数量。</span></strong></span></p>
+
+                    <p><br>
+                        <span style="color:#FF0000;"><strong><span style="font-size:14px;">京东宝贝/店铺/秒杀提醒：京东的宝贝关注是宝贝收藏，店铺关注是店铺粉丝，秒杀提醒是活动的。</span></strong></span></p>
+
+                    <p><br>
+                        <span style="color:#FF0000;"><strong><span style="font-size:14px;">拼多多收藏：增加买家收藏宝贝和关注店铺的数量，增加权重，拼多多收藏都是当天完成。</span></strong></span></p>
+
+                    <p><br>
+                        <span style="color:#FF0000;"><strong><span style="font-size:14px;">温馨提醒：很多顾客买了收藏加购，在手机端千牛看收藏的数量，然后就反馈说不足，这种是错误的，手机千牛显示的是当天被收藏的款数，加购的款数，而不是次数。正确查看方法：隔天看电脑端生意参谋→商品→商品概况。</span></strong></span></p>
+
+                    <p><br>
+                        <span style="color:#FF0000;"><strong><span style="font-size:14px;">由于近期淘宝的更新，导致目前店铺收藏掉粉严重，只能保证当天的量，掉量不补，介意的勿拍。</span></strong></span></p>
+
+                    <p>&nbsp;</p>
+                </div>
+
+                <form id="J_collection_form" method="post">
+                    <div class="mainBox2">
+                        <h3>第一步：选择平台类型</h3>
+                        <ul class="startul" id="J_tab_type">
+                            {volist name="type_list" id="type"}
+                                {php}if(strpos($type['type'], '拼多多') !== false){continue;}{/php}
+                                {eq name="key" value="0"}
+                            <li class="startulli curr" data-typeid="{$type.type_id}">{$type.type}</li>
+                                {else/}
+                            <li class="startulli" data-typeid="{$type.type_id}">{$type.type}</li>
+                                {/eq}
+                            {/volist}
+                        </ul>
+                    </div>
+                    <div class="mainBox2">
+                        <h3>第二步：选择收藏套餐服务</h3>
+                        <div>
+                            <select name="price_id" id="J_select_collection" style="font-weight:bold; font-size:16px; width: 100%;">
+                                {volist name="prices" id="price"}
+                                    {php}
+                                    $price['general_price'] = $price['general_price'] > 0 ? $price['general_price'] : $price['cost_price'];
+                                    $price['vip_price'] = $price['vip_price'] > 0 ? $price['vip_price'] : $price['cost_price'];
+                                    $price['agent_price'] = $price['agent_price'] > 0 ? $price['agent_price'] : $price['cost_price'];
+
+                                    $my_price = $price['general_price'];
+                                    switch((int)$user_info['user_level_id']){
+                                        case 2:
+                                            $my_price = $price['vip_price'];
+                                            break;
+                                        case 3:
+                                            $my_price = $price['agent_price'];
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    $unit_price = isset($unit_price) ? $unit_price : $my_price;
+                                    $price_tip = (isset($price_tip) && $price_tip != '') ? $price_tip : $price['tip'];
+                                    $class_hidden = ' hidden ';
+                                    if((int)$price['type_id'] == (int)$type_id){
+                                        $class_hidden = '';
+                                    }
+                                    {/php}
+                                <option data-tip="{$price.tip}" data-price="{$my_price}"
+                                        class="{$class_hidden} J_price_type_{$price.type_id}" value="{$price.price_id}">
+                                    {$price.title}
+                                    &nbsp;
+                                    普通会员：{$price.general_price}元
+                                    &nbsp;/&nbsp;
+                                    VIP会员：{$price.vip_price}元
+                                    &nbsp;/&nbsp;
+                                    代理：{$price.agent_price}元
+                                </option>
+                                {/volist}
+                            </select>
+                            <input type="hidden" id="J_unit_price" name="price" value="{$unit_price}" />
+                        </div>
+                        <div id="J_tip_price" style="text-indent: 10px; margin: 10px 0px 10px 0px; color: red; font-weight: bold">
+                            {$price_tip|default=''}
+                        </div>
+                    </div>
+
+                    <div class="mainBox2">
+                        <h3>第三步：填写来路信息</h3>
+                        <div class="content">
+                            <ul class="flow-ul">
+                                <li>
+                                    <input type="text" name="shop_name"
+                                           placeholder="请填写店铺名称" style="width: 500px" />
+                                </li>
+                                <li>
+                                    <ol>
+                                        <li class="LikeyWord">
+                                            <input type="text" name="shop_keywords"
+                                                   placeholder="请填写关键词，如有多个关键词请用逗号隔开" style="width: 500px" />
+                                            <input type="text" name="shop_url"
+                                                   placeholder="请填写商品链接" style="width: 500px; margin-top: 5px" />
+                                        </li>
+                                    </ol>
+                                </li>
+
+                                <li style="color: red">注：关键词最多可以添加5个，用逗号隔开。</li>
+                                <li>
+                                    <input id="J_form_submit" class="btn" value="确认购买" type="button">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mainBox2">
+                        <h3>购买必知</h3>
+                        <p style="text-align: center;"><strong><span style="font-size:18px;">收藏宝贝，店铺及购物车，天猫关注购买须知。</span></strong></p>
+
+                        <p><br>
+                            <span style="font-size:16px;">问：当天下单，什么时候可以开始？<br>
+答：<span style="color:#FF0000;">当天18:00之前的订单当天处理，过18:00的隔天安排。</span></span></p>
+
+                        <p>&nbsp;</p>
+
+                        <p><span style="font-size:16px;">问：你们安排（收藏，购物车）是怎么安排的，刷手如何操作的。<br>
+答：<span style="color:#FF0000;">刷手通过关键词搜索进主宝贝，浏览主宝贝1-2分钟，收藏主宝贝，然后再随机浏览其他1-3款副宝贝。</span></span></p>
+
+                        <p>&nbsp;</p>
+
+                        <p><span style="font-size:16px;">问：刷收藏有什么好处。<br>
+答：<span style="color:#FF0000;">淘宝刷收藏推广，简单说，就是通过增加收藏人气，提高商品的排名。吸引流量，增加销售。</span><br>
+<span style="color:#FF8C00;">淘宝收藏人气的提升，是淘宝人气宝贝权重提升的重要因素。如果卖家有好的商品，再加上配合刷单提升权重，收藏率高的宝贝在淘宝搜索系统是属于有潜力的商品，搜索系统会优先展示该商品必然会随着浏览量的增加，销售量会大幅增长。特别是要上天天特价等活动的审核前期，收藏率和购物车率是能提高一审通过的概率。</span></span></p>
+
+                        <p>&nbsp;</p>
+
+                        <p><span style="font-size:16px;">问：收藏套餐是多久能完成的？<br>
+答：<span style="color:#FF0000;">默认情况下，100个收藏是1-2天完成，200个是2-3天，500个是5天，1000个是10天左右。</span></span></p>
+
+                        <p>&nbsp;</p>
+
+                        <p><span style="font-size:16px;">问：我不知道你们放了多少，完成了吗。<br>
+答：<span style="color:#FF0000;">放之前可以先记录一下产品多少收藏，对比安排后多少收藏。</span><br>
+<span style="color:#FF8C00;">我们安排之前也会给您做记录，想查询可以咨询客服。</span></span></p>
+
+                        <p>&nbsp;</p>
+
+                        <p><span style="font-size:16px;">问：能根据客户要求指定时间完成吗？<br>
+答：<span style="color:#FF0000;">可以的，套餐要做多少天，可以在第三步，店铺旺旺后面备注。例如：请输入店铺旺旺 （5天完成收藏）</span></span></p>
+
+                        <p>&nbsp;</p>
+
+                        <p><span style="font-size:16px;">问：怎样查看收藏有没有在做？<br>
+答：<span style="color:#FF0000;">任务状态显示为“进行处理”，则表明客服已开始处理，您可以在生意参谋查看收藏的增加，或者查看宝贝的总收藏数。</span></span></p>
+
+                        <p>&nbsp;</p>
+
+                        <p><span style="font-size:16px;">问：我定的套餐是自定义要求10天完成的，可是第5天就显示“完成处理”，是怎么回事？<br>
+答：<span style="color:#FF0000;">自定义天数的，如果显示“完成处理”是没关系的，我们这边是会把数量给您做完的。</span></span></p>
+
+                        <p>&nbsp;</p>
+
+                        <p><span style="font-size:16px;">问：收藏购物车刷多会不会被封店<br>
+答:<span style="color:#FF0000;">收藏不同于刷信誉，淘宝是不查的，更不会封店，因为收藏是可以直接执行的，如果说刷收藏会封店，那我只能说淘宝得关门了，举个简单的例子：如果收藏有风险，会封店，那么我想打击哪家店，就刷他，难道他就因此而受处罚或封店了吗？那是不可能的事哦，所以说，请放心大胆滴刷！刷收藏不会被封店的，如果刷收藏会封店的话，那么哪个店铺老板得罪了我，我就花钱请人帮他刷几千个，几万个，淘宝会封他的店吗，答案肯定是不会封，所以淘宝刷收藏，只有好处，一点点坏处都没有。</span></span></p>
+
+                        <p>&nbsp;</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{$Think.config.__URI_PUB_STATIC__}index/js/buy_collection.js{$Think.config.__TIMESTAMP__}"></script>

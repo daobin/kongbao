@@ -1,0 +1,45 @@
+<div id="pageBody">
+    {:widget('user/sidebar')}
+    <div id="mainBody2">
+        <div class="mainBox2">
+            <div class="content">
+                会员组：<span class="red">{$user_info.user_level.level_name}</span>，
+                账户余额：<span class="red">{$user_info.balance}</span>&nbsp;元
+                <a href="{:url('index/finance/accountrecharge')}" class="red2">（空包充值）</a>
+                <span class="hidden">刷单专用余额：<span class="red">0.00</span>&nbsp;元
+                    <a href="" class="red2">（刷单专用充值）</a>
+                </span>
+            </div>
+
+            <h3>账号登录信息</h3>
+            <div class="content">
+                <table class="tab" width="100%" cellspacing="0" cellpadding="5">
+                    <tr>
+                        <th width="120" align="right">用户名：</th>
+                        <td>{$user_info.user_account}</td>
+                    </tr>
+                    <tr>
+                        <th width="120" align="right">注册时间：</th>
+                        <td>{$user_info.gmt_create}</td>
+                    </tr>
+                    <tr>
+                        <th width="120" align="right">上次登录时间：</th>
+                        <td>{$user_info.gmt_login|default=''}</td>
+                    </tr>
+                    <tr>
+                        <th width="120" align="right">注册IP：</th>
+                        <td>{$user_info.register_ip}</td>
+                    </tr>
+                    <tr>
+                        <th width="120" align="right">上次登录IP：</th>
+                        <td>{$user_info.login_ip|default=''}</td>
+                    </tr>
+                </table>
+            </div>
+            {notempty name="page_text"}
+            <div class="notice3">{$page_text.description}</div>
+            {/notempty}
+            <div class="mainBox2"></div>
+        </div>
+    </div>
+</div>

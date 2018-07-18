@@ -1,0 +1,6 @@
+<option data-cityid="" value="">城市</option>
+{notempty name="cities"}
+    {volist name="cities" id="city"}
+<option data-cityid="{$city.city_id}" value="{$city.city_name}">{$city.city_name}</option>
+    {/volist}
+{/notempty}

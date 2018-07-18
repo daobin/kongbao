@@ -1,0 +1,53 @@
+<div id="pageBody">
+    {:widget('user/sidebar')}
+    <div id="mainBody2">
+        <div class="mainBox2">
+            <h3> 我推荐的下线 </h3>
+            <div class="content">
+                {notempty name="page_text"}
+                <div class="notice3">{$page_text.description}</div>
+                {/notempty}
+                <div class="notice3">
+                    <strong>推广网址：</strong>
+                    <input type="text" size="50" id="J_share_url" value="{$recommend_link}" />
+                    <a style="color:#0094ff; cursor: pointer;" id="J_copy_link">复制推广链接</a>
+                </div>
+
+                <table class="tab2" width="100%" cellspacing="0" cellpadding="0" border="0">
+                    <tr>
+                        <th width="15%">下线帐号</th>
+                        <th width="15%">下线QQ</th>
+                        <th width="20%">下线邮箱</th>
+                        <th width="10%">余额</th>
+                        <th width="10%">会员级别</th>
+                        <th width="15%">注册时间</th>
+                    </tr>
+                    {notempty name="recommend_users"}
+                        {volist name="recommend_users" id="r_user"}
+                    <tr>
+                        <td>{$r_user.user_account}</td>
+                        <td>{$r_user.qq_number}</td>
+                        <td>{$r_user.email_address}</td>
+                        <td>0.00</td>
+                        <td>{$r_user.user_level.level_name}</td>
+                        <td>{$r_user.gmt_create}</td>
+                    </tr>
+                        {/volist}
+                    {/notempty}
+                </table>
+                {notempty name="recommend_users"}
+                {$recommend_users->render()}
+                {/notempty}
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('#J_copy_link').click(function(){
+        //选中ID为J_share_url的input或textarea元素标签
+        document.getElementById('J_share_url').select();
+        //将选中元素值复制到剪切板
+        document.execCommand('copy');
+        alert('推广链接复制成功');
+    });
+</script>

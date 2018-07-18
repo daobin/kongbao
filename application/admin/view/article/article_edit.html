@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="row">
+        <form method="post" autocomplete="off">
+            <div class="form-group">
+                <label>文章标题</label>
+                <input class="form-control" type="text" maxlength="120"
+                       name="title" value="{$article.title}" />
+            </div>
+            <div class="form-group">
+                <label>文章分类</label>
+                <select class="form-control" name="category_id">
+                    <option value="0">请选择文章分类</option>
+                    {volist name="categories" id="category"}
+                        {php}
+                        $selected = '';
+                        if((int)$category['category_id'] == (int)$article['category_id']){
+                            $selected = 'selected';
+                        }
+                        {/php}
+                    <option value="{$category.category_id}" {$selected}>{$category.category_name}</option>
+                    {/volist}
+                </select>
+            </div>
+            <div class="form-group">
+                <label>默认浏览量</label>
+                <input class="form-control dv_int" type="text" name="review_count"
+                       value="{$article.review_count}" placeholder="不填写默认为0" />
+            </div>
+            <div class="form-group">
+                <label>文章排序</label>
+                <input class="form-control dv_int" type="text" maxlength="6"
+                       name="sort" value="{$article.sort}" placeholder="不填写默认为0" />
+            </div>
+            <div class="form-group">
+                <label>文章内容</label>
+                <script id="J_description" name="description" type="text/plain">
+                    {$article.description}
+                </script>
+            </div>
+            <div class="form-group">
+                <label>展示状态</label>
+                {php}
+                $checked_on = '';
+                $checked_off = '';
+                if(isset($article['status']) && (int)$article['status'] == 0){
+                    $checked_off = ' checked="checked" ';
+                }else{
+                    $checked_on = ' checked="checked" ';
+                }
+                {/php}
+                <span class="padding-right20"></span>
+                <input type="radio" name="status" value="1" {$checked_on} />开启
+                &nbsp;&nbsp;
+                <input type="radio" name="status" value="0" {$checked_off} />关闭
+            </div>
+            <div class="form-group">
+                <label>推荐文章</label>
+                {php}
+                $checked_on = '';
+                $checked_off = '';
+                if(isset($article['is_recommend']) && (int)$article['is_recommend'] == 1){
+                    $checked_on = ' checked="checked" ';
+                }else{
+                    $checked_off = ' checked="checked" ';
+                }
+                {/php}
+                <span class="padding-right20"></span>
+                <input type="radio" name="is_recommend" value="1" {$checked_on} />开启
+                &nbsp;&nbsp;
+                <input type="radio" name="is_recommend" value="0" {$checked_off} />关闭
+            </div>
+            <div class="form-group margin-top30">
+                <input type="hidden" name="article_id" value="{$article.article_id}" />
+                <input class="btn btn-primary" type="submit" value="保存" />
+                <span class="padding-right20"></span>
+                <a href="{:url('admin/article/article')}">
+                    <input type="button" class="btn btn-info" value="返回列表页" />
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

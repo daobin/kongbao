@@ -1,0 +1,34 @@
+<div id="header">
+    <div class="top">
+        <div class="title">{$Think.WEBSITE_NAME}管理系统</div>
+        <div class="nav-label">
+            <span>{$time_greeting}：『 {$Think.session.admin.account} 』</span>
+            <a href="{:url('admin/index/logout')}">安全退出</a>
+        </div>
+    </div>
+    {notempty name="navs"}
+    <div class="nav-bar">
+        <ul>
+            {volist name="navs" id="nav"}
+            <li>
+                <a href="{notempty name='nav.url'}{$nav.url}{else/}javascript:void(0);{/notempty}">
+                    {$nav.name}
+                </a>
+                {notempty name="nav.sub_navs"}
+                <ul>
+                    {volist name="nav.sub_navs" id="sub_nav"}
+                    <li>
+                        <a href="{notempty name='sub_nav.url'}{$sub_nav.url}{else/}javascript:void(0);{/notempty}">
+                            {$sub_nav.name}
+                        </a>
+                    </li>
+                    {/volist}
+                </ul>
+                {/notempty}
+            </li>
+            {/volist}
+        </ul>
+        <div class="clear-both"></div>
+    </div>
+    {/notempty}
+</div>

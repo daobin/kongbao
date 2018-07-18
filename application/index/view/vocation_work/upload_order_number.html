@@ -1,0 +1,85 @@
+<div id="pageBody">
+    {:widget('user/sidebar')}
+    <div id="mainBody2">
+        <div class="mainBox2">
+            <h3>在线自助购买空包 单号 </h3>
+            <div class="content">
+                <div class="notice3"><p style="text-align: center;"><span style="color:#FF0000;"><span style="font-size:16px;"><strong><span style="background-color:#0000FF;">淘宝推荐:国通快递</span></strong></span><strong style="color: rgb(255, 0, 0); font-size: 16px;"><span style="background-color:#0000FF;">&nbsp;&nbsp;&nbsp;&nbsp;</span></strong><strong style="color: rgb(255, 0, 0); font-size: 16px;"><span style="background-color:#0000FF;">&nbsp;&nbsp;&nbsp;&nbsp;</span></strong><span style="font-size:16px;"><strong><span style="background-color:#0000FF;">京东推荐:国通快递</span></strong></span><strong style="color: rgb(255, 0, 0); font-size: 16px;"><span style="background-color:#0000FF;">&nbsp;&nbsp;&nbsp;&nbsp;</span></strong><strong style="color: rgb(255, 0, 0); font-size: 16px;"><span style="background-color:#0000FF;">&nbsp;&nbsp;&nbsp;&nbsp;</span></strong><span style="font-size:16px;"><strong><span style="background-color:#0000FF;">拼多多推荐:国通快递</span></strong></span></span></p>
+
+                    <p><br>
+                        <span style="font-size:16px;"><span style="color:#FF0000;"><strong>京东国通、京东龙邦、支持（折800、蘑菇街、苏宁、微店）美丽说等电商平台！</strong></span></span></p>
+
+                    <p>&nbsp;</p>
+
+                    <p><span style="font-size:16px;"><span style="color:#FF0000;"><strong>另：京东龙邦支持发往港澳台&nbsp;&nbsp;&nbsp;</strong></span><strong><a href="http://img.161856.com/sp/%E6%8B%BC%E5%A4%9A%E5%A4%9A%E6%89%B9%E9%87%8F%E5%8F%91%E8%B4%A7%E6%95%99%E7%A8%8B.mp4" target="_blank"><span style="color:#FF0000;"><span style="background-color:#0000FF;">拼多多批量发货教程</span></span></a></strong></span></p>
+                </div>
+
+                <form id="orderform" method="post">
+                    <div class="mainBox2">
+                        <h3 style="padding:10px;">第一步：选择快递类型 </h3>
+                        <div class="content">
+                            <select name="type" id="type" onchange="getmyprice()" style="font-weight:bold; font-size:14px;"> <option selected="selected" value="0">请选择需要购买的快递公司物流</option><option data-price="1.35" data-tips="该快递目前只支持《淘宝》《天猫》《阿里》卖家订单发货，每天21:30点之前下单24点左右出物流，超21:30点以后购买的是第二天出物流！" data-type="1" data-max="10000" value="45">国通快递（淘宝-专用） 普通会员:1.39元 / VIP会员:1.37元 / 代理:1.35元 / 我的价格:1.35元</option><option data-price="1.25" data-tips="请选择安能物流发货，每天21点之前下单当天晚上显示物流，超21点以后购买的是第二天晚上出物流！" data-type="1" data-max="10000" value="62">安能物流（淘宝-专用） 普通会员:1.29元 / VIP会员:1.27元 / 代理:1.25元 / 我的价格:1.25元</option><option data-price="1.25" data-tips="每天21点之前下单当天晚上显示物流，超21点以后购买的是第二天晚上出物流！" data-type="1" data-max="10000" value="33">增益速递（淘宝-专用） 普通会员:1.29元 / VIP会员:1.27元 / 代理:1.25元 / 我的价格:1.25元</option><option data-price="1.95" data-tips="支持淘宝、天猫、发货，每天21点之前下单当天晚上显示物流，超21点以后购买的是第二天晚上出物流！" data-type="1" data-max="10000" value="54">申通快递（淘宝-专用） 普通会员:1.99元 / VIP会员:1.97元 / 代理:1.95元 / 我的价格:1.95元</option><option data-price="1.15" data-tips="该快递目前只支持《淘宝》卖家订单发货，每天21:30点之前下单24点左右出物流，超21:30点以后购买的是第二天出物流！（（（（请选择 江苏速通物流 发货））））" data-type="1" data-max="10000" value="82">速通物流（淘宝-专用） 普通会员:1.19元 / VIP会员:1.17元 / 代理:1.15元 / 我的价格:1.15元</option><option data-price="1.95" data-tips="该快递目前只支持《淘宝》《天猫》《阿里》卖家订单发货，每天21:30点之前下单24点左右出物流，超21:30点以后购买的是第二天出物流！" data-type="1" data-max="10000" value="74">百世快递（淘宝-专用） 普通会员:1.99元 / VIP会员:1.97元 / 代理:1.95元 / 我的价格:1.95元</option><option data-price="0.90" data-tips="该快递目前只支持《京东》卖家订单发货，每天14点之前下单当天18点左右出物流，21:30点之前下单24点左右出物流，超21:30点以后购买的是第二天出物流！" data-type="1" data-max="10000" value="35">龙邦快递（京东-专用） 普通会员:0.94元 / VIP会员:0.92元 / 代理:0.90元 / 我的价格:0.90元</option><option data-price="1.10" data-tips="该快递目前只支持《京东》《蘑菇街》《折800》《微店》《苏宁》卖家订单发货，21:30点之前下单24点左右出物流，超21:30点以后购买的是第二天出物流！" data-type="1" data-max="10000" value="42">国通快递（京东-专用） 普通会员:1.14元 / VIP会员:1.12元 / 代理:1.10元 / 我的价格:1.10元</option><option data-price="1.30" data-tips="每天21点之前下单当天晚上显示物流，本快递只能在京东发货，超21点以后购买的是第二天晚上出物流！（本单号严禁淘宝发货，一旦在淘宝发货将无法显示物流！）" data-type="1" data-max="10000" value="55">申通快递（京东-专用） 普通会员:1.34元 / VIP会员:1.32元 / 代理:1.30元 / 我的价格:1.30元</option><option data-price="1.15" data-tips="该快递目前只支持《京东》卖家订单发货，每天21:30点之前下单24点左右出物流，超21:30点以后购买的是第二天出物流！" data-type="1" data-max="10000" value="58">安能快递（京东-专用） 普通会员:1.19元 / VIP会员:1.17元 / 代理:1.15元 / 我的价格:1.15元</option><option data-price="0.75" data-tips="该快递目前只支持《京东》卖家订单发货，每天14点之前下单当天18点左右出物流，21:30点之前下单24点左右出物流，超21:30点以后购买的是第二天出物流！" data-type="1" data-max="10000" value="67">亚风快运（京东-专用） 普通会员:0.79元 / VIP会员:0.77元 / 代理:0.75元 / 我的价格:0.75元</option><option data-price="1.10" data-tips="该快递目前只支持《拼多多》卖家订单发货，每天14点之前下单当天18点左右出物流，22点之前下单24点左右出物流，超22点以后购买的是第二天出物流！（另：购买后请在拼多多后台发货否则不出物流！）" data-type="1" data-max="10000" value="66">国通快递(拼多多-专用) 普通会员:1.14元 / VIP会员:1.12元 / 代理:1.10元 / 我的价格:1.10元</option><option data-price="1.35" data-tips="该快递目前只支持《拼多多》卖家订单发货，每天14点之前下单当天18点左右出物流，22点之前下单24点左右出物流，超22点以后购买的是第二天出物流！" data-type="1" data-max="10000" value="65">百世快递(拼多多-专用) 普通会员:1.39元 / VIP会员:1.37元 / 代理:1.35元 / 我的价格:1.35元</option><option data-price="0.95" data-tips="该快递目前只支持《拼多多》卖家订单发货，每天14点之前下单当天18点左右出物流，22点之前下单24点左右出物流，超22点以后购买的是第二天出物流！" data-type="1" data-max="10000" value="68">龙邦快递(拼多多-专用) 普通会员:0.99元 / VIP会员:0.97元 / 代理:0.95元 / 我的价格:0.95元</option><option data-price="0.95" data-tips="该快递目前只支持《拼多多》卖家订单发货，每天14点之前下单当天18点左右出物流，22点之前下单24点左右出物流，超22点以后购买的是第二天出物流！" data-type="1" data-max="10000" value="69">亚风速递(拼多多-专用) 普通会员:0.99元 / VIP会员:0.97元 / 代理:0.95元 / 我的价格:0.95元</option><option data-price="1.30" data-tips="该快递目前只支持《拼多多》卖家订单发货，每天14点之前下单当天18点左右出物流，22点之前下单24点左右出物流，超22点以后购买的是第二天出物流！（本单号严禁淘宝发货，一旦在淘宝发货将无法显示物流！）" data-type="1" data-max="10000" value="72">申通快递(拼多多-专用) 普通会员:1.34元 / VIP会员:1.32元 / 代理:1.30元 / 我的价格:1.30元</option><option data-price="1.45" data-tips="本快递只支持拼多多发货，购买后把快递单号拿去发货，快递上班时间购买1-2个小时内就出物流的了非上班时间购买24小时内出物流，本快递是直接对接快递公司一旦购买了以后是无法退款的，请您在确认购买之前核实清楚，避免给亲带麻烦！！" data-type="6" data-max="100" value="81">圆通快递(拼多多-专用) 普通会员:1.49元 / VIP会员:1.47元 / 代理:1.45元 / 我的价格:1.45元</option></select>
+                            <input name="button2" class="btn" id="setDefault" value="设为默认" type="button">
+                        </div>
+                        <div id="kd_tips" style="text-indent: 10px; margin: 10px 0px 10px 0px; color: red; font-weight: bold"></div>
+                    </div>
+                    <div class="mainBox3">
+                        <h3>第二步：填写收货地址↓可批量购买单号，每行一个地址 最多<span id="max"></span>个地址<br>
+                        </h3>
+                        <div class="content">
+                            <textarea name="content" id="content" style="width: 700px; height: 250px;"></textarea>
+                            <div>
+                                商品名称：<input placeholder="衣服" value="" id="goodName" name="goodName" style=" margin: 10px 0px 10px 0px;" type="text"> (必填)
+                                <a href="/News/Info_74052.html" target="_blank" style="width:160px;height:35px;line-height:35px;text-align:center;margin-left:20px;display:inline-block;border-radius:4px;background-color:#f75d39;color:#fff;">点击下载快递上传模板</a>
+                            </div>
+                            <div>
+                                快递重量：<input value="0.5" id="kg" name="kg" style="width: 40px; margin: 10px 0px 10px 0px; text-align: center" type="text">
+                                公斤，本网站代发空包可按照顾客的重量发出，同步快递公司内网信息。
+                            </div>
+
+                            <ul class="ul_save">
+
+                                <li>
+                                    <input name="button" class="btn_check" id="btn_check" value="检查收货地址" type="button">
+                                </li>
+                                <li>余额：<strong><span style="color: #FF0000;">10.00</span></strong> 元，【<strong><span style="color: #FF0000;"> 代理会员 </span></strong>】下单：<span class="price"></span>元/单。</li>
+                                <li>
+                                    <div id="uploadbtn" style="width:110px;" class="webuploader-container"><div class="webuploader-pick">导入文件</div><div id="rt_rt_1chl6vquc1rge1vls17ep1loacnr1" style="position: absolute; top: 0px; left: 0px; width: 86px; height: 34px; overflow: hidden; bottom: auto; right: auto;"><input name="file" class="webuploader-element-invisible" multiple="multiple" accept="application/xls,application/csv,application/xlsx" type="file"><label style="opacity: 0; width: 100%; height: 100%; display: block; cursor: pointer; background: rgb(255, 255, 255) none repeat scroll 0% 0%;"></label></div></div></li>
+                                <li><a href="/News/Info/2398" target="_blank">导入操作教程&gt;&gt;</a></li>
+                            </ul>
+                            <table id="tb_addrs" style="display: none">
+                                <thead>
+                                <tr>
+                                    <th style="width: 5%">序号</th>
+                                    <th style="width: 5%">快递单号</th>
+                                    <th style="width: 10%">发货人</th>
+                                    <th style="width: 5%">发货电话</th>
+                                    <th style="width: 30%">发货地址</th>
+                                    <th style="width: 10%">收货人</th>
+                                    <th style="width: 5%">收货电话</th>
+                                    <th style="width: 30%">收货地址</th>
+                                </tr>
+                                </thead>
+                                <tbody id="ty_addrs"></tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="8" style="text-align: center; color: red;"><span id="num">0</span> X <span id="price" class="price"></span>= <span id="result"></span>
+                                        元
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                            <div class="clear"></div>
+                            <div class="btn_box">
+
+                                <input name="button" class="btn_buy" id="btn_buy" value="确认购买" type="button">
+
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="container">
+    {notempty name="nav_list"}
+    <div class="row margin-bottom30">
+        <a href="{:url('admin/recommend_navigation/edit')}" class="btn btn-info pull-right">新增导航</a>
+    </div>
+    {/notempty}
+    <div class="row">
+        {notempty name="nav_list"}
+        <table class="table table-bordered">
+            <tr>
+                <th class="text-center">ID</th>
+                <th class="text-center">导航标题</th>
+                <th class="text-center">导航位置</th>
+                <th class="text-center">排序</th>
+                <th class="text-center">展示状态</th>
+                <th class="text-center">新窗口打开</th>
+                <th class="text-center">操作</th>
+            </tr>
+            {volist name="nav_list" id="nav"}
+            <tr>
+                <td class="text-center">{$nav.recommend_navigation_id}</td>
+                <td class="text-center">{$nav.title}</td>
+                <td class="text-center">{$nav.position_text}</td>
+                <td class="text-center">{$nav.sort}</td>
+                <td class="text-center">{$nav.status_text}</td>
+                <td class="text-center">{$nav.new_window_open_text}</td>
+                <td class="text-center">
+                    <a href="{:url('admin/recommend_navigation/edit', 'nav_id='.$nav.recommend_navigation_id)}" title="编辑">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                </td>
+            </tr>
+            {/volist}
+        </table>
+        {else/}
+        <table class="table table-bordered">
+            <tr>
+                <td class="text-center" colspan="7">
+                    什么都没有呀！空空如也~~~
+                    <a href="{:url('admin/recommend_navigation/edit')}" class="btn btn-info">新增导航</a>
+                </td>
+            </tr>
+        </table>
+        {/notempty}
+    </div>
+</div>

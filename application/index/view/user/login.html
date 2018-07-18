@@ -1,0 +1,63 @@
+<div class="band_user">
+    <form id="formLogin" autocomplete="off">
+        <dl>
+            <dt>
+                会员登录
+                <a href="{:url('index/user/register')}" style="color:blue;font-size:16px">快速注册</a>
+            </dt>
+            <dd class="login">
+                <ul>
+                    <li>
+                        用户名：
+                        <input name="name" class="txt" id="l_name" placeholder="输入用户名" type="text" />
+                    </li>
+                    <li>
+                        密&nbsp;&nbsp;&nbsp;&nbsp;码：
+                        <input name="pwd" id="l_pwd" class="txt" type="password" />
+                    </li>
+                    <li>
+                        <input id="btnlogin" class="btn_login" value="登  录" type="button">
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+    </form>
+</div>
+<script src="{$Think.config.__URI_PUB_STATIC__}index/js/layer.min.js"></script>
+<script type="text/javascript">
+    //登陆
+    $("#btnlogin").click(function () {
+        if ($.trim($("#l_name").val()) == "" || $.trim($("#l_pwd").val()) == "") {
+            layer.alert("用户名、密码不能给为空！");
+            return false;
+        }
+
+        $("#formLogin").ajaxSubmit({
+            url: "{:url('ajax/index.user/login')}",
+            type: 'post',
+            dataType: 'json',
+            success: function (res) {
+                if (res.status == 'success') {
+                    window.location.href = "{:url('index/user/index')}";
+                    return false;
+                }
+
+                var layerId = layer.alert("用户名或密码错误！", "8", function () {
+                    layer.close(layerId);
+                });
+            },
+            error: function (data, status, e) {
+                console.log('********** Ajax Submit Error **********');
+            }
+        });
+
+        return false;
+    });
+
+    //键盘事件,点击回车提交登陆表单
+    $(document).keydown(function (e) {
+        if (e.keyCode == 13) {
+            $("#btnlogin").click();
+        }
+    });
+</script>

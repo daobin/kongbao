@@ -1,0 +1,81 @@
+<div id="pageBody">
+    <div id="NewsLeft">
+        <div class="mainBox article_info">
+            <h3>
+                <a href="{:url('index/index/category', ['category_id'=>$article_info.category_id])}">
+                    {$article_info.category.category_name|strip_tags}
+                </a>
+            </h3>
+            <div class="newsBox2">
+                <h1>{$article_info.title|strip_tags}</h1>
+                <div class="data">更新时间：{:date('Y-m-d', strtotime($article_info.gmt_create))} / 阅读次数:{$article_info.review_count}</div>
+                <div class="newscont">{$article_info.description}</div>
+                <br/>
+                <div style="text-align: left;">
+                    {notempty name="prev_article"}
+                    <p class="other">上一篇：
+                        <a href="{:url('index/index/article', ['article_id'=>$prev_article.article_id])}"
+                           target="_blank">{$prev_article.title|strip_tags}</a>
+                    </p>
+                    {/notempty}
+                    {notempty name="next_article"}
+                    <p class="other">下一篇：
+                        <a href="{:url('index/index/article', ['article_id'=>$next_article.article_id])}"
+                           target="_blank">{$next_article.title|strip_tags}</a>
+                    </p>
+                    {/notempty}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="NewsRight">
+        {notempty name="new_articles"}
+        <dl>
+            <dt>
+                <h2>最新文章</h2>
+            </dt>
+            <dd>
+                <ul>
+                    {volist name="new_articles" id="article"}
+                    <li>
+                        <a title="{$article.title|strip_tags}"
+                           href="{:url('index/index/article', ['article_id'=>$article.article_id])}">
+                            {if condition="mb_strlen($article.title, 'UTF-8') > 6"}
+                                {:strip_tags(mb_substr($article.title, 0, 6, 'UTF-8'))}......
+                            {else/}
+                                {$article.title|strip_tags}
+                            {/if}
+                        </a>
+                        <span>[ {:date('Y-m-d', strtotime($article.gmt_create))} ]</span>
+                    </li>
+                    {/volist}
+                </ul>
+            </dd>
+        </dl>
+        {/notempty}
+        {notempty name="hot_articles"}
+        <dl>
+            <dt>
+                <h2>最热文章</h2>
+            </dt>
+            <dd>
+                <ul>
+                    {volist name="hot_articles" id="article"}
+                    <li>
+                        <a title="{$article.title|strip_tags}"
+                           href="{:url('index/index/article', ['article_id'=>$article.article_id])}">
+                            {if condition="mb_strlen($article.title, 'UTF-8') > 6"}
+                                {:strip_tags(mb_substr($article.title, 0, 6, 'UTF-8'))}......
+                            {else/}
+                                {$article.title|strip_tags}
+                            {/if}
+                        </a>
+                        <span>[ {:date('Y-m-d', strtotime($article.gmt_create))} ]</span>
+                    </li>
+                    {/volist}
+                </ul>
+            </dd>
+        </dl>
+        {/notempty}
+    </div>
+</div>

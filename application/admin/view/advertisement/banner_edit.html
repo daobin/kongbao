@@ -1,0 +1,148 @@
+<div class="container">
+    <div class="row">
+        <form method="post" enctype="multipart/form-data" autocomplete="off" id="J_Banner_Form">
+            <div class="form-group">
+                <label>Banner标题</label>
+                <input class="form-control" type="text" disabled value="{$banner.banner_title}" />
+            </div>
+            <div class="form-group">
+                <label>Banner展示状态</label>
+                {php}
+                $checked_on = '';
+                $checked_off = '';
+                if(isset($banner['banner_status']) && (int)$banner['banner_status'] == 1){
+                $checked_on = ' checked="checked" ';
+                }else{
+                $checked_off = ' checked="checked" ';
+                }
+                {/php}
+                <span class="padding-right20"></span>
+                <input type="radio" name="banner_status" value="1" {$checked_on} />开启
+                &nbsp;&nbsp;
+                <input type="radio" name="banner_status" value="0" {$checked_off} />关闭
+            </div>
+            <div class="width800 margin-top30">
+                <table class="table table-bordered">
+                    <tr>
+                        <th class="text-center width200">Banner图片</th>
+                        <th class="text-center">图片详情</th>
+                        <th class="text-center width100">
+                            <a class="btn btn-sm btn-success" id="J_Add_Image">
+                                <i class="glyphicon glyphicon-plus"></i>新增图片
+                            </a>
+                        </th>
+                    </tr>
+                    {notempty name="banner.details"}
+                        {volist name="banner.details" id="detail"}
+                    <tr>
+                        <td class="text-center">
+                            <input type="file" name="files[{$detail.banner_detail_id}]" />
+                            <br/>
+                            <img src="{$detail.detail_image}"
+                                 style="display: inline-block; border: none; width: 120px; height: auto;" />
+                        </td>
+                        <td colspan="2">
+                            <div class="form-group">
+                                <label>链接地址</label>
+                                <input type="text" class="form-control" maxlength="500"
+                                       value="{$detail.detail_link}"
+                                       name="links[{$detail.banner_detail_id}]" />
+                            </div>
+                            <div class="form-group">
+                                <label>图片排序</label>
+                                <input type="text" class="form-control dv_int" maxlength="6"
+                                       value="{$detail.detail_sort}"
+                                       name="sorts[{$detail.banner_detail_id}]" placeholder="不填写默认为0" />
+                            </div>
+                            <div class="form-group">
+                                {php}
+                                $checked_on = '';
+                                $checked_off = '';
+                                if(isset($detail['detail_status']) && (int)$detail['detail_status'] == 1){
+                                    $checked_on = ' checked="checked" ';
+                                }else{
+                                    $checked_off = ' checked="checked" ';
+                                }
+                                {/php}
+                                <label>图片展示状态</label>
+                                <span class="padding-right20"></span>
+                                <input type="radio" name="status[{$detail.banner_detail_id}]"
+                                       {$checked_on} value="1" />开启
+                                &nbsp;&nbsp;
+                                <input type="radio" name="status[{$detail.banner_detail_id}]"
+                                       {$checked_off} value="0" />关闭
+                            </div>
+                            <div class="form-group">
+                                {php}
+                                $checked_on = '';
+                                $checked_off = '';
+                                if(isset($detail['new_window_open']) && (int)$detail['new_window_open'] == 1){
+                                    $checked_on = ' checked="checked" ';
+                                }else{
+                                    $checked_off = ' checked="checked" ';
+                                }
+                                {/php}
+                                <label>新窗口打开</label>
+                                <span class="padding-right20"></span>
+                                <input type="radio" name="new_window_opens[{$detail.banner_detail_id}]"
+                                       {$checked_on} value="1" />是
+                                &nbsp;&nbsp;
+                                <input type="radio" name="new_window_opens[{$detail.banner_detail_id}]"
+                                       {$checked_off} value="0" />否
+                            </div>
+                        </td>
+                    </tr>
+                        {/volist}
+                    {/notempty}
+                    <tr id="J_Image_Tpl" class="display-none">
+                        <td class="text-center">
+                            <input type="file" name="files[__I__]" />
+                        </td>
+                        <td colspan="2">
+                            <div class="form-group">
+                                <label>链接地址</label>
+                                <input type="text" class="form-control" maxlength="500" name="links[__I__]" />
+                            </div>
+                            <div class="form-group">
+                                <label>图片排序</label>
+                                <input type="text" class="form-control dv_int" maxlength="6"
+                                       name="sorts[__I__]" placeholder="不填写默认为0" />
+                            </div>
+                            <div class="form-group">
+                                <label>图片展示状态</label>
+                                <span class="padding-right20"></span>
+                                <input type="radio" name="status[__I__]" value="1" />开启
+                                &nbsp;&nbsp;
+                                <input type="radio" name="status[__I__]" checked value="0" />关闭
+                            </div>
+                            <div class="form-group">
+                                <label>新窗口打开</label>
+                                <span class="padding-right20"></span>
+                                <input type="radio" name="new_window_opens[__I__]" value="1" />是
+                                &nbsp;&nbsp;
+                                <input type="radio" name="new_window_opens[__I__]" checked value="0" />否
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="form-group margin-top30">
+                <input type="hidden" name="banner_id" value="{$banner.banner_id}" />
+                <input class="btn btn-primary" type="submit" value="保存" />
+                <span class="padding-right20"></span>
+                <a href="{:url('admin/advertisement/index')}">
+                    <input type="button" class="btn btn-info" value="返回列表页" />
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    var add_index = 0;
+    $('#J_Add_Image').click(function(){
+        var tr_html = '<tr>' + ($('#J_Image_Tpl').html()) + '</tr>';
+        tr_html = tr_html.replace(/__I__/g, 'i_' + add_index);
+        $('#J_Banner_Form table').append(tr_html);
+        add_index++;
+    });
+</script>

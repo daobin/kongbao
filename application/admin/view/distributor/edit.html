@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <form method="post" autocomplete="off">
+            <div class="form-group">
+                <label>分站域名</label>
+                {notempty name="distributor"}
+                <input class="form-control dv_word" type="text" maxlength="100"
+                       name="site_domain" value="{$distributor.site_domain}" readonly />
+                {else/}
+                <input class="form-control dv_word" type="text" maxlength="100"
+                       name="site_domain" placeholder="域名保存后不允许再次修改，如：www.baidu.com" />
+                {/notempty}
+            </div>
+            <div class="form-group">
+                <label>管理员账号</label>
+                {notempty name="distributor"}
+                <input class="form-control dv_word" type="text" maxlength="30"
+                       name="admin_account" value="{$distributor.admin_account}" readonly />
+                {else/}
+                <input class="form-control dv_word" type="text" maxlength="30"
+                       name="admin_account" placeholder="账号保存后不允许再次修改" />
+                {/notempty}
+            </div>
+            <div class="form-group">
+                <label>管理员密码</label>
+                <input class="form-control dv_word" type="password" maxlength="30"
+                       name="admin_password" placeholder="账号存在时可不填写，填写则表示重置密码" />
+            </div>
+            <div class="form-group margin-top30">
+                <input type="hidden" name="distributor_id" value="{$distributor.distributor_id}" />
+                <input class="btn btn-primary" type="submit" value="保存" />
+                <span class="padding-right20"></span>
+                <a href="{:url('admin/distributor/index')}">
+                    <input type="button" class="btn btn-info" value="返回列表页" />
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

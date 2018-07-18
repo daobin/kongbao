@@ -1,0 +1,51 @@
+<div id="pageBody">
+    {:widget('user/sidebar')}
+    <div id="mainBody2">
+        <div class="mainBox2">
+            <h3> 空包单号购买记录 （购买确认后自动显示单号，看到完整单号后就可以在网店发货了） </h3>
+            <div class="content">
+                {notempty name="page_text"}
+                <div class="notice3">{$page_text.description}</div>
+                {/notempty}
+                <ul class="tags" id="J_tab_delivery_status">
+                    <li class="btn_action on" data-dstatus="0">未发货</li>
+                    <li class="btn_action" data-dstatus="1">已发货</li>
+                    <li class="btn_action hidden" data-action="-1">一个月前单号</li>
+                    <li style="background-color:#fff;" class="hidden">
+                        <form>
+                            <input type="button" class="btn" value="下载未发货单号" />
+                        </form>
+                    </li>
+                </ul>
+                <form id="J_form_search">
+                    <table class="tab" width="100%" cellspacing="0" cellpadding="0" border="0">
+                        <tr>
+                            <td align="left">
+                                单号：
+                                <input type="text" size="15" name="logistics_number"
+                                       placeholder="请输入单号" value="" />
+                                下单时间：
+                                <input type="text" name="gmt_start"
+                                       placeholder="开始时间" style="width:160px" />
+                                到
+                                <input type="text" name="gmt_end"
+                                       placeholder="结束时间" style="width:160px" />
+                                <input type="hidden" id="J_delivery_status"
+                                       name="delivery_status" value="0" />
+                                <input type="button" class="btn" id="J_btn_search" value="查询" />
+                                <input type="submit" class="btn hidden" id="J_btn_download" value="下载" />
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                <table id="J_list_express" class="tab2" width="100%" cellspacing="0" cellpadding="0" border="0">
+                    <tr>
+                        <th> 已买空包 </th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{$Think.config.__URI_PUB_STATIC__}index/js/order.js{$Think.config.__TIMESTAMP__}"></script>
+<script src="{$Think.config.__URI_PUB_STATIC__}index/js/my_express.js{$Think.config.__TIMESTAMP__}"></script>

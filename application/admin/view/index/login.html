@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{$Think.WEBSITE_NAME}管理系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="{$Think.config.__URI_PUB_STATIC__}bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="{$Think.config.__URI_PUB_STATIC__}admin/css/login.css"/>
+</head>
+<body>
+<div id="login-logo"><img src="{$Think.config.__URI_PUB_STATIC__}admin/images/login-logo.png"></div>
+<div id="login-form">
+    <div>{$Think.WEBSITE_NAME}管理系统登录</div>
+    <hr>
+    <form class="form-inline" method="post" action="index.html" autocomplete="off">
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon">登录账号</div>
+                <input class="form-control" name="account" type="text" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon">登录密码</div>
+                <input class="form-control" name="password" type="password" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon">验证编码</div>
+                <input class="form-control width100" name="captcha" type="text" />
+                <img src="{:captcha_src()}?{:uniqid()}" id="captcha_img" title="看不清楚？点击刷新！" />
+            </div>
+        </div>
+        <div class="form-group">
+            <input class="btn btn-success width100" value="登录" type="submit" />
+        </div>
+        <br/><br/>
+    </form>
+</div>
+
+<script src="{$Think.config.__URI_PUB_STATIC__}jquery/jquery-1.11.0.min.js"></script>
+<script src="{$Think.config.__URI_PUB_STATIC__}jquery/jquery-form-4.1.0.js"></script>
+<script>
+    $('#captcha_img').click(function () {
+        $(this).prop('src', '/captcha.html?' + Math.random());
+    });
+
+    $('#login-form form').submit(function () {
+        $(this).ajaxSubmit({
+            url: '/ajax/admin.login/process',
+            type: 'post',
+            dataType: 'json',
+            success: function (resdata) {
+                if(resdata.status == 'success'){
+                    window.location.href = '{$comefrom}';
+                }else{
+                    alert(resdata.msg);
+                    $('#captcha_img').click();
+                    $('input[name=captcha]').val('');
+                }
+            }
+        });
+        return false;
+    });
+</script>
+
+</body>
+</html>

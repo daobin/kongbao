@@ -1,0 +1,74 @@
+{notempty name="loop_banner.details"}
+<div class="banner slideBox" style="margin-bottom:5px">
+    <div class="hd">
+        <ul>
+            {volist name="loop_banner.details" id="banner"}
+            <li>{$key+1}</li>
+            {/volist}
+        </ul>
+    </div>
+    <div class="bd">
+        <ul>
+            {volist name="loop_banner.details" id="banner"}
+            <li>
+                <a href="{$banner.detail_link|default='javascript:void(0);'}"
+                   {if condition="(int)$banner['new_window_open'] == 1"}target="_blank"{/if}>
+                    <img src="{$banner.detail_image|default=''}" />
+                </a>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+</div>
+<script src="{$Think.config.__URI_PUB_STATIC__}index/js/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript">
+    $(".slideBox").slide({mainCell: ".bd ul", autoPlay: true, delayTime: 2000});
+</script>
+{/notempty}
+<div class="ind_wrapper">
+    {notempty name="main_banner.details"}
+    <div class="midd">
+        {volist name="main_banner.details" id="banner"}
+        <a href="{$banner.detail_link|default='javascript:void(0);'}"
+           {if condition="(int)$banner['new_window_open'] == 1"}target="_blank"{/if}>
+            <img src="{$banner.detail_image|default=''}" style="width:1002px"/>
+        </a>
+        {/volist}
+    </div>
+    {/notempty}
+    {notempty name="categories"}
+    <div class="bottom">
+        {volist name="categories" id="category"}
+            {php}
+            $articles = $category->articles()->where('status', 1)->field(true)->select();
+            if(empty($articles)){
+                continue;
+            }
+            {/php}
+        <dl>
+            <dt>
+                <h2>{$category.category_name|strip_tags}</h2>
+                <a href="{:url('index/index/category', ['category_id'=>$category.category_id])}"
+                   target="_blank">更多...</a>
+            </dt>
+            <dd>
+                <ul>
+                    {volist name="articles" id="article"}
+                    <li>
+                        <a title="{$article.title|strip_tags}"
+                           href="{:url('index/index/article', ['article_id'=>$article.article_id])}">
+                            {if condition="mb_strlen($article.title, 'UTF-8') > 16"}
+                                {:strip_tags(mb_substr($article.title, 0, 16, 'UTF-8'))}......
+                            {else/}
+                                {$article.title|strip_tags}
+                            {/if}
+                        </a>
+                    </li>
+                    {/volist}
+                </ul>
+            </dd>
+        </dl>
+        {/volist}
+    </div>
+    {/notempty}
+</div>

@@ -1,0 +1,85 @@
+<style type="text/css">
+    label.error {
+        padding: 15px;
+        color: red;
+    }
+
+    .startul {
+        padding: 0px;
+        margin: 0;
+        height: 30px;
+        line-height: 30px;
+        border-bottom: solid 3px red
+    }
+
+    .startulli {
+        float: left;
+        background-color: #c7c1c1;
+        cursor: pointer;
+        margin-right: 3px;
+        width: 120px;
+        text-align: center;
+        -moz-border-radius-topleft: 10px;
+        -moz-border-radius-topright: 10px;
+        -webkit-border-top-left-radius: 10px;
+        -webkit-border-top-right-radius: 10px;
+    }
+
+    .startulli:hover {
+        background-color: red;
+        color: white;
+    }
+
+    .curr {
+        background-color: red;
+        color: white
+    }
+
+    .hidd {
+        display: none;
+    }
+
+    .btn_alipay {
+        cursor: pointer;
+        background-image: url('/public/static/index/image/btn_alipay.jpg');
+        border: 0px;
+        width: 150px;
+        height: 50px
+    }
+</style>
+<div id="pageBody">
+    {:widget('user/sidebar')}
+    <div id="mainBody2">
+        <ul class="startul">
+            <li class="startulli curr" data-start="0">支付宝、微信充值</li>
+        </ul>
+        <div class="mainBox2" style="min-height:500px;">
+            <h3> 24小时全自动充值实时到账，必须完成以下两个步骤！</h3>
+            <div class="content tags" id="tag0">
+                <div class="mainBox2">
+                    <h3>请选择以下方式进行自动充值，无需联系客服自动到账！</h3>
+                    <form method="post" autocomplete="off">
+                        <div class="content">
+                            充值金额：
+                            <input type="text" name="amount" value="5" class="input" size="6" />
+                            元 <span class="red">*</span>最低充值 5 元
+                            &nbsp;&nbsp;&nbsp;
+                            <input type="button" class="btn_alipay" id="J_btn_alipay_recharge" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="mainBox2">
+                <div class="content"> 当前帐号余额：<span class="red">{$user_info.balance}</span>元 <br>
+                    <br>
+                    充值如遇到问题，请联系客服！ <br>
+                    <div class="notice3">
+                        <p>
+                            <img src="/public/static/index/image/recharge_desc.jpg" style="width: 700px; height: 400px;" />
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

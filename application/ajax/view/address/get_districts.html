@@ -1,0 +1,7 @@
+<option data-districtid="" value="">区县</option>
+{notempty name="districts"}
+    {volist name="districts" id="district"}
+<option data-districtid="{$district.district_id}"
+        value="{$district.district_name}">{$district.district_name}</option>
+    {/volist}
+{/notempty}

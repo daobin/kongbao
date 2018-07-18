@@ -1,0 +1,18 @@
+{volist name="flow_list" id="flow"}
+<tr class="pageBox J_order_flow">
+    <td>
+        <p>套餐名称：{$flow.title}</p>
+        <p>订单编号：{$flow.order_number}</p>
+        <p>店铺名称：{$flow.shop_name}</p>
+        <p>关&nbsp;&nbsp;键&nbsp;&nbsp;词：<font>{$flow.shop_keywords}</font></p>
+        <p style="width:720px">商品ID：{$flow.shop_product_id|default=$flow.shop_url}</p>
+        <p>订单状态：<span class="red">{$flow.status_text}</span></p>
+        <h4>购买金额：{$flow.buy_price}，购买时间：{$flow.gmt_create}</h4>
+    </td>
+</tr>
+{/volist}
+{notempty name="flow_list"}
+<tr class="J_order_flow">
+    <td>{$flow_list->render()}</td>
+</tr>
+{/notempty}

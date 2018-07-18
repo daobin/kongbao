@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {:widget('meta/index')}
+</head>
+<body>
+{:widget('header/index')}
+<div id="msg_tip" class="container margin-top30">
+    <div class="row">
+        {php}
+        if(session(\app\common\constant\Session::SUCCESS_MSG)){
+            echo '<p class="bg-success">', session(\app\common\constant\Session::SUCCESS_MSG), '</p>';
+            session(\app\common\constant\Session::SUCCESS_MSG, null);
+        }else if(session(\app\common\constant\Session::ERROR_MSG)){
+            echo '<p class="bg-danger">', session(\app\common\constant\Session::ERROR_MSG), '</p>';
+            session(\app\common\constant\Session::ERROR_MSG, null);
+        }
+        {/php}
+    </div>
+</div>
+<div id="main">{__CONTENT__}</div>
+{:widget('footer/index')}
+</body>
+</html>

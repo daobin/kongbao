@@ -1,0 +1,55 @@
+<div style="clear:both"></div>
+<div id="footer">
+    {notempty name="friend_lins"}
+    <div class="footerLinks">
+        <ul>
+            <li style="color:red">友情链接：</li>
+            {volist name="friend_lins" id="link"}
+            <li><a href="{$link.link}"
+                   {if condition="(int)$link['new_window_open'] == 1"}target="_blank"{/if}>{$link.title|strip_tags}</a></li>
+            {/volist}
+        </ul>
+        <div style="clear:both"></div>
+    </div>
+    {/notempty}
+    <div class="copyright">
+        <p> 快捷快递，全峰快递，申通快递，龙邦快递，韵达快递，国通快递，天天快递，速尔快递，真实空包网。 企业空包网 版权所有，并保留所有权利</p>
+        <p><a href="http://www.gogokb.com">http://www.gogokb.com</a></p>
+        <p>
+            ICP备案证书号：
+            <a href="http://www.miitbeian.gov.cn" target="_blank"> 粤ICP备18037172号-5</a>
+            &nbsp;&nbsp;
+            技术支持：
+            <a href="/" target="_blank">{$Think.const.WEBSITE_NAME}</a>
+        </p>
+        <p></p>
+    </div>
+</div>
+{notempty = name="qq_list"}
+<div id="floatTools" class="float0831" style="display: none;">
+    <div class="floatL">
+        <a id="aFloatTools_Show" class="btnOpen"
+           title="查看在线客服" style="display:none"
+           onclick="javascript:$('#divFloatToolsView').animate({width: 'show', opacity: 'show'}, 'normal',function(){ $('#divFloatToolsView').show();kf_setCookie('RightFloatShown', 0, '', '/', 'www.istudy.com.cn'); });$('#aFloatTools_Show').attr('style','display:none');$('#aFloatTools_Hide').attr('style','display:block');"
+           href="javascript:void(0);">展开</a>
+
+        <A id="aFloatTools_Hide" class="btnCtn"
+           title="关闭在线客服"
+           onclick="javascript:$('#divFloatToolsView').animate({width: 'hide', opacity: 'hide'}, 'normal',function(){ $('#divFloatToolsView').hide();kf_setCookie('RightFloatShown', 1, '', '/', 'www.istudy.com.cn'); });$('#aFloatTools_Show').attr('style','display:block');$('#aFloatTools_Hide').attr('style','display:none');"
+           href="javascript:void(0);">收缩</A></div>
+    <div id="divFloatToolsView" class="floatR">
+        <div class="tp"></div>
+        <div class="cn">
+            <ul>
+                <li class="top"><h3 class="titZx">QQ咨询</h3></li>
+                {volist name="qq_list" id="qq"}
+                <li style='background-image:url(http://wpa.qq.com/pa?p=2:{$qq.qq_number}:52); background-repeat:no-repeat; background-position:0px 6px;'>
+                    <a target='_blank' class=icoTc href='http://wpa.qq.com/msgrd?v=3&uin={$qq.qq_number}&site=qq&menu=yes'>{$qq.name|strip_tags}</a>
+                </li>
+                {/volist}
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="{$Think.config.__URI_PUB_STATIC__}index/js/kefu.js"></script>
+{/notempty}

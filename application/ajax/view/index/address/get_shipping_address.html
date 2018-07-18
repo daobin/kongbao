@@ -1,0 +1,42 @@
+{eq name="select_all" value="1"}
+    {notempty name="address"}
+        {volist name="address" id="addr"}
+<option {eq name="addr.is_default" value="1" }selected="selected"{/eq} value="{$addr.shipping_address_id}">
+    {$addr.name},{$addr.telephone},{$addr.province_name}{$addr.city_name}{$addr.district_name}{$addr.address}
+</option>
+        {/volist}
+    {/notempty}
+{else/}
+<table class="tab2" width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+        <th width="14%"> 发货人姓名</th>
+        <th width="40%"> 发货地址</th>
+        <th width="20%"> 发货人电话</th>
+        <th width="16%"> 状态</th>
+        <th width="9%"> 操作</th>
+    </tr>
+    {notempty name="address"}
+        {volist name="address" id="addr"}
+    <tr class="J_address">
+        <td>{$addr.name}</td>
+        <td>{$addr.province_name}{$addr.city_name}{$addr.district_name}{$addr.address}</td>
+        <td>{$addr.telephone}</td>
+        <td class="red">
+            {eq name="addr.is_default" value="1"}
+            默认发货地
+            {else/}
+            <input data-id="{$addr.shipping_address_id}" class="btn J_default"
+                   value="设置为默认" type="button" />
+            {/eq}
+        </td>
+        <td>
+            <input data-id="{$addr.shipping_address_id}" class="btn J_delete" value="删除" type="button"/>
+        </td>
+    </tr>
+        {/volist}
+    {/notempty}
+</table>
+{notempty name="address"}
+{$address->render()}
+{/notempty}
+{/eq}

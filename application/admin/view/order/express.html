@@ -1,0 +1,100 @@
+<div class="container">
+    <div class="row">
+        <ul class="nav nav-tabs J_nav_tab_btn">
+            <li class="{$sale_active}"><a href="?active_data=sale">已销售</a></li>
+            <li class="{$post_active}"><a href="?active_data=post">已提交</a></li>
+            <li class="{$delivery_active}"><a href="?active_data=delivery">已发货</a></li>
+        </ul>
+        <div class="nav-tabs-content J_nav_tab_content">
+            <div class="active">
+                <form class="form-inline" method="post" action="{:url('admin/order/postexpress')}">
+                    <div class="form-group">
+                        <select class="form-control width500" name="title_id" id="J_express_select">
+                            <option value="0">--请选择快递--</option>
+                            {volist name="prices" id="price"}
+                                {if condition="(int)$title_id == (int)$price['title_id']"}
+                            <option value="{$price.title_id}" selected>{$price.title}</option>
+                                {else/}
+                            <option value="{$price.title_id}">{$price.title}</option>
+                                {/if}
+                            {/volist}
+                        </select>
+                    </div>
+                    {if condition="$active_data != 'post' & $active_data != 'delivery'"}
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-success" value="提交选择快递至总站" />
+                    </div>
+                    {/if}
+                </form>
+                <form class="form-inline margin-top30">
+                    <div class="form-group">
+                        <select name="s_key" class="form-control width200">
+                            <option {eq name="s_key" value="user_account"}selected {/eq}
+                                    value="user_account">购买用户</option>
+                            <option {eq name="s_key" value="logistics_number"}selected {/eq}
+                                    value="logistics_number">快递单号</option>
+                            <option {eq name="s_key" value="shipping_name"}selected {/eq}
+                                    value="shipping_name">发货人</option>
+                            <option {eq name="s_key" value="delivery_name"}selected {/eq}
+                                    value="delivery_name">收货人</option>
+                        </select>
+                        <input type="text" name="s_val" class="form-control width500"
+                               placeholder="请输入左侧选项对应的搜索值" value="{$s_val|default=''}" />
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="active_data" value="{$active_data}" />
+                        <input type="submit" class="btn btn-primary" value="搜索" />
+                    </div>
+                </form>
+                <table class="table table-bordered margin-top30">
+                    <tr>
+                        <th class="text-center">快递名称</th>
+                        <th class="text-center">收货信息</th>
+                        <th class="text-center">购买会员</th>
+                        <th class="text-center">购买时间</th>
+                        <th class="text-center">提交时间</th>
+                        {if condition="$active_data != 'post' & $active_data != 'delivery'"}
+                        <th class="text-center">操作</th>
+                        {/if}
+                    </tr>
+                    {volist name="orders" id="order"}
+                    <tr>
+                        <td class="text-center">{$order.title}</td>
+                        <td width="50%">
+                            {php}
+                            if($order['logistics_number']){
+                                echo '<b>快递单号：</b>', $order['logistics_number'], '<br/>';
+                            }
+                            if($order['shipping_address']){
+                                echo '<b>发货人：</b>';
+                                echo $order['shipping_address']['name'];
+                                echo '，', $order['shipping_address']['telephone'];
+                                echo '，', $order['shipping_address']['province_name'];
+                                echo $order['shipping_address']['city_name'], $order['shipping_address']['district_name'];
+                                echo $order['shipping_address']['address'], '<br/>';
+                            }
+                            echo '<b>收货人：</b>', $order['post_msg'];
+                            {/php}
+                        </td>
+                        <td class="text-center">{$order.user.user_account}</td>
+                        <td class="text-center">{$order.gmt_create}</td>
+                        <td class="text-center">{$order.gmt_post|trim|default='待提交'}</td>
+                        {if condition="$active_data != 'post' & $active_data != 'delivery'"}
+                        <td class="text-center">
+                            <a href="?del_ids={$order.order_express_id}"
+                               class="btn btn-sm btn-danger J_delete_one">删除</a>
+                        </td>
+                        {/if}
+                    </tr>
+                    {/volist}
+                </table>
+                {notempty name="orders"}{$orders->render()}{/notempty}
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('#J_express_select').change(function () {
+        window.location.href = '?active_data={$active_data}&title_id=' + $.trim($(this).val());
+    });
+</script>

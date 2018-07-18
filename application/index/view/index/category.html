@@ -1,0 +1,48 @@
+<div id="pageBody">
+    <div id="classList">
+        {notempty name="categories"}
+        <dl>
+            <dt>
+            <h2>文章分类</h2></dt>
+            <dd>
+                <ul style="margin-left:10px">
+                    {volist name="categories" id="category"}
+                    <li>
+                        <a title="{$category.category_name|strip_tags}"
+                           href="{:url('index/index/category', ['category_id'=>$category.category_id])}">
+                            {$category.category_name|strip_tags}
+                        </a>
+                    </li>
+                    {/volist}
+                </ul>
+            </dd>
+        </dl>
+        {/notempty}
+    </div>
+    <div id="Newslist">
+        <div class="mainBox">
+            <h3>{$cate_info.category_name|strip_tags}</h3>
+            <div class="newsBox2">
+                {notempty name="articles"}
+                <ul class="list" id="pageBox">
+                    {volist name="articles" id="article"}
+                    <li>
+                        <a class="newsTit" title="{$article.title|strip_tags}"
+                           href="{:url('index/index/article', ['article_id'=>$article.article_id])}">
+                            {if condition="mb_strlen($article.title, 'UTF-8') > 32"}
+                                {:strip_tags(mb_substr($article.title, 0, 32, 'UTF-8'))}......
+                            {else/}
+                                {$article.title|strip_tags}
+                            {/if}
+                        </a>
+                        <span>[ {:date('Y/m/d', strtotime($article.gmt_create))} ]</span>
+                    </li>
+                    {/volist}
+                </ul>
+                {$articles->render()}
+                {/notempty}
+                <br>
+            </div>
+        </div>
+    </div>
+</div>

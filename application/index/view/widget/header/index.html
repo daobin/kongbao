@@ -1,0 +1,56 @@
+<div class="top_bg">
+    <div class="top_mem">
+        <div class='left' id="loginMsg" style="text-align:left">
+            {notempty name="user_info"}
+            <div class="left">
+                您好，
+                <a href="{:url('index/user/index')}" style="color:#b01111">
+                    {$user_info->user_account}
+                </a>，欢迎您回来
+                【<a href="{:url('index/user/index')}">会员中心</a>】
+                【<a href="{:url('index/user/logout')}">退出</a>】
+            </div>
+            {else/}
+            <div class="left">
+                您好，欢迎来到{$Think.const.WEBSITE_NAME}！
+                【<a href="{:url('index/user/register')}">快速注册</a>】
+                【<a href="{:url('index/user/login')}">登录</a>】
+            </div>
+            {/notempty}
+        </div>
+        <div class="right">{$top_text.description|default=''}</div>
+    </div>
+</div>
+
+<div id="header">
+    <div class="logo">
+        <h1>
+            <a href='/' class='lg'>
+            <img width='300' height='70' alt='' src='{$Think.const.WEBSITE_LOGO_IMG}'/>
+            </a>
+        </h1>
+    </div>
+    <div class="top_ad">
+        {notempty name="top_banner.details"}
+        <div class="ad1">
+            <a href="{$top_banner.details[0]['detail_link']|default='javascript:void(0);'}">
+                <img width="700" height="70"
+                     src="{$top_banner.details[0]['detail_image']|default=''}" />
+            </a>
+        </div>
+        {/notempty}
+    </div>
+    <div style="clear:both;"></div>
+</div>
+<div style="height:5px;clear:both;"></div>
+<div class="nav2">
+    <div class="topMenu">
+        <ul>
+            <li><a href="/">首页</a></li>
+            {volist name="navs" id="nav"}
+            <li><a href="{$nav.link}"
+                   {if condition="(int)$nav['new_window_open'] == 1"}target="_blank"{/if}>{$nav.title|strip_tags}</a></li>
+            {/volist}
+        </ul>
+    </div>
+</div>

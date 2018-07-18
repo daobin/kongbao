@@ -1,0 +1,123 @@
+<div class="container">
+    <div class="row">
+        <a href="{:url('admin/price/syncexpress')}" class="btn btn-success">一键同步总站快递信息</a>
+        <span class="padding-right20"></span>
+        <a href="?del_ids=all" class="btn btn-danger" id="J_delete_all">一键删除所有快递信息</a>
+    </div>
+    <div class="row margin-top30">
+        <form class="form-inline" method="post" autocomplete="off">
+            <div class="form-group">
+                <label>普通会员利润</label>
+                <input type="text" class="form-control width100" name="general_profit"
+                       value="{$PRICE_PROFIT_OF_GENERAL|number_format=###,2,'.',''}"/>
+            </div>
+            <span class="padding-right20"></span>
+            <div class="form-group">
+                <label>VIP会员利润</label>
+                <input type="text" class="form-control width100" name="vip_profit"
+                       value="{$PRICE_PROFIT_OF_VIP|number_format=###,2,'.',''}"/>
+            </div>
+            <span class="padding-right20"></span>
+            <div class="form-group">
+                <label>代理会员利润</label>
+                <input type="text" class="form-control width100" name="agent_profit"
+                       value="{$PRICE_PROFIT_OF_AGENT|number_format=###,2,'.',''}"/>
+            </div>
+            <span class="padding-right20"></span>
+            <div class="form-group">
+                <label>API会员利润</label>
+                <input type="text" class="form-control width100" name="api_profit"
+                       value="{$PRICE_PROFIT_OF_API|number_format=###,2,'.',''}"/>
+            </div>
+            <span class="padding-right20"></span>
+            <div class="form-group">
+                <input type="hidden" name="batch_profit_set"/>
+                <input type="submit" class="btn btn-info" value="批量设置利润"/>
+            </div>
+        </form>
+    </div>
+    <div class="row margin-top30">
+        <form method="post" autocomplete="off">
+            <table class="table table-bordered">
+                <tr>
+                    <th class="text-center">序号</th>
+                    <th class="text-center">快递公司</th>
+                    <th class="text-center width100">进货价</th>
+                    <th class="text-center width100">普通会员价</th>
+                    <th class="text-center width100">VIP会员价</th>
+                    <th class="text-center width100">代理会员价</th>
+                    <th class="text-center width100">API会员价</th>
+                    <th class="text-center width100">排序</th>
+                    <th class="text-center">销售</th>
+                    <th class="text-center">操作</th>
+                </tr>
+                {notempty name="prices"}
+                    {volist name="prices" id="price"}
+                <tr>
+                    <td class="text-center">{$key + 1}</td>
+                    <td class="text-center">{$price.title}</td>
+                    <td class="text-center">{$price.cost_price|number_format=###,2,'.',''}</td>
+                    <td class="text-center">
+                        <input type="text" class="form-control" name="general_prices[{$price.price_id}]"
+                               value="{$price.general_price|number_format=###,2,'.',''}" />
+                    </td>
+                    <td class="text-center">
+                        <input type="text" class="form-control" name="vip_prices[{$price.price_id}]"
+                               value="{$price.vip_price|number_format=###,2,'.',''}" />
+                    </td>
+                    <td class="text-center">
+                        <input type="text" class="form-control" name="agent_prices[{$price.price_id}]"
+                               value="{$price.agent_price|number_format=###,2,'.',''}" />
+                    </td>
+                    <td class="text-center">
+                        <input type="text" class="form-control" name="api_prices[{$price.price_id}]"
+                               value="{$price.api_price|number_format=###,2,'.',''}" />
+                    </td>
+                    <td class="text-center">
+                        <input type="text" class="form-control dv_int" maxlength="6"
+                               name="sorts[{$price.price_id}]" value="{$price.sort}" />
+                    </td>
+                    <td class="text-center">
+                        {php}
+                        $checked_on = '';
+                        $checked_off = '';
+                        if(isset($price['status']) && (int)$price['status'] == 0){
+                            $checked_off = ' checked="checked" ';
+                        }else{
+                            $checked_on = ' checked="checked" ';
+                        }
+                        {/php}
+                        <input type="radio" name="status[{$price.price_id}]" {$checked_on} value="1" />开启
+                        <span class="padding-right20"></span>
+                        <input type="radio" name="status[{$price.price_id}]" {$checked_off} value="0" />关闭
+                    </td>
+                    <td class="text-center">
+                        <a href="?del_ids={$price.price_id}" class="btn btn-sm btn-danger J_delete_one">删除</a>
+                    </td>
+                </tr>
+                    {/volist}
+                {/notempty}
+            </table>
+            {notempty name="prices"}
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="保存修改" />
+            </div>
+            {/notempty}
+        </form>
+    </div>
+</div>
+<script>
+    $('#J_delete_all').click(function(){
+        if(!confirm('确定要删除所有快递信息？')){
+            return false;
+        }
+        return true;
+    });
+
+    $('.J_delete_one').click(function(){
+        if(!confirm('确定要删除该快递信息？')){
+            return false;
+        }
+        return true;
+    });
+</script>

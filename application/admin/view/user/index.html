@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="row">
+        {notempty name="user_list"}
+        <table class="table table-bordered">
+            <tr>
+                <th class="text-center">ID</th>
+                <th class="text-center">会员账号</th>
+                <th class="text-center">会员等级</th>
+                <th class="text-center">推荐人</th>
+                <th class="text-center">推荐数</th>
+                <th class="text-center">注册时间</th>
+                <th class="text-center" width="35%">操作</th>
+            </tr>
+            {volist name="user_list" id="user"}
+            <tr>
+                <td class="text-center">{$user.user_id}</td>
+                <td class="text-center">{$user.user_account}</td>
+                <td class="text-center">{$user.user_level.level_name}</td>
+                <td class="text-center">{$user.recommend_user_id_info.user_account}</td>
+                <td class="text-center">{$user.my_recommend_users_cnt}</td>
+                <td class="text-center">{$user.gmt_create}</td>
+                <td class="text-center">
+                    <a href="{:url('admin/user/edit', 'user_id='.$user.user_id)}"
+                       class="btn btn-sm btn-primary">
+                        <i class="glyphicon glyphicon-edit"></i>
+                        编辑
+                    </a>
+                    <span class="padding-right20"></span>
+                    <a href="{:url('admin/user/edit', 'user_id='.$user.user_id)}"
+                       class="btn btn-sm btn-danger">
+                        <i class="glyphicon glyphicon-yen"></i>
+                        价格
+                    </a>
+                    <span class="padding-right20"></span>
+                    <a href="{:url('admin/user/edit', 'user_id='.$user.user_id)}"
+                       class="btn btn-sm btn-warning">
+                        <i class="glyphicon glyphicon-gift"></i>
+                        奖罚
+                    </a>
+                    <span class="padding-right20"></span>
+                    <a href="{:url('admin/user/edit', 'user_id='.$user.user_id)}"
+                       class="btn btn-sm btn-info">
+                        <i class="glyphicon glyphicon-th"></i>
+                        资金明细
+                    </a>
+                </td>
+            </tr>
+            {/volist}
+        </table>
+        {$user_list->render()}
+        {else/}
+        <table class="table table-bordered">
+            <tr>
+                <td class="text-center" colspan="7">
+                    什么都没有呀！空空如也~~~
+                </td>
+            </tr>
+        </table>
+        {/notempty}
+    </div>
+</div>

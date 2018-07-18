@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row">
+        <ul class="nav nav-tabs J_nav_tab_btn">
+            <li class="{$banner_active}"><a>Banner图片</a></li>
+            <li class="{$text_active}"><a>文字内容</a></li>
+        </ul>
+        <div class="nav-tabs-content J_nav_tab_content">
+            <div class="{$banner_active}">
+                <table class="table table-bordered">
+                    <tr>
+                        <th class="text-center">Banner标题</th>
+                        <th class="text-center">展示状态</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                    {notempty name="banners"}
+                        {volist name="banners" id="banner"}
+                    <tr>
+                        <td class="text-center">{$banner.banner_title}</td>
+                        <td class="text-center">{$banner.status_text}</td>
+                        <td class="text-center">
+                            <a href="{:url('admin/advertisement/banneredit', 'banner_id='.$banner.banner_id)}" title="编辑">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </a>
+                        </td>
+                    </tr>
+                        {/volist}
+                    {/notempty}
+                </table>
+            </div>
+            <div class="{$text_active}">
+                <table class="table table-bordered">
+                    <tr>
+                        <th class="text-center">内容标题</th>
+                        <th class="text-center">展示状态</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                    {notempty name="texts"}
+                        {volist name="texts" id="text"}
+                    <tr>
+                        <td class="text-center">{$text.title}</td>
+                        <td class="text-center">{$text.status_text}</td>
+                        <td class="text-center">
+                            <a href="{:url('admin/advertisement/textedit', 'text_id='.$text.text_id)}" title="编辑">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </a>
+                        </td>
+                    </tr>
+                        {/volist}
+                    {/notempty}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

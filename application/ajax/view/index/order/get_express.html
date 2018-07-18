@@ -1,0 +1,23 @@
+{volist name="express_list" id="express"}
+<tr class="pageBox J_order_express">
+    <td>
+        <p>{$express.title}：{$express.logistics_number}</p>
+        <p>发货信息：
+            {$express.shipping_address.name}，{$express.shipping_address.telephone}，
+            {$express.shipping_address.province_name}{$express.shipping_address.city_name}{$express.shipping_address.district_name}{$express.shipping_address.address}
+        </p>
+        <p>收货信息：{$express.post_msg}</p>
+        <p>
+            <span>购买金额：{$express.buy_price}，购买时间：{$express.gmt_create}</span>
+            {eq name="delivery_status" value="0"}
+            <a onclick="javascript:void(0);">删除退款</a>
+            {/eq}
+        </p>
+    </td>
+</tr>
+{/volist}
+{notempty name="express_list"}
+<tr class="J_order_express">
+    <td>{$express_list->render()}</td>
+</tr>
+{/notempty}

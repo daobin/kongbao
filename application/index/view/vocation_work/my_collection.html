@@ -1,0 +1,39 @@
+<div id="pageBody">
+    {:widget('user/sidebar')}
+    <div id="mainBody2">
+        <div class="mainBox2">
+            <h3> 收藏购买记录 </h3>
+            <div class="content">
+                <div class="notice3"><div style="text-align: center;"><span style="font-size:14px;">宝贝收藏：增加产品宝贝收藏量。<br>
+收藏店铺：收藏店铺增加手机粉丝。<br>
+购物车：增加产品买家加入购物车数量。<br>
+天猫品牌关注：增加品牌关注度。<br>
+京东宝贝关注/店铺关注：增加宝贝关注数，店铺收藏关注人数。<br>
+&nbsp;<br>
+目前稳定，支持大量发布收藏，加购，收藏店铺。指定完成时间可备注在店铺旺旺（如在店铺旺旺留言：2天完成）主持看到单就会安排2天完成此单。</span></div>
+                </div>
+                <table class="tab" width="100%" cellspacing="0" cellpadding="0" border="0">
+                    <tbody><tr>
+                        <td>
+                            <ul class="startul" id="J_tab_o_status">
+                                <li class="startulli curr" data-ostatus="1">等待处理</li>
+                                <li class="startulli" data-ostatus="2">进行处理</li>
+                                <li class="startulli" data-ostatus="3">完成处理</li>
+                                <li class="startulli" data-ostatus="4">取消任务</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <input type="hidden" id="J_o_status" value="1"/>
+                <table id="J_list_collection"  class="tab2" width="100%" cellspacing="0" cellpadding="0" border="0">
+                    <tbody><tr>
+                        <th width="100"> 已买收藏 </th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{$Think.config.__URI_PUB_STATIC__}index/js/order.js{$Think.config.__TIMESTAMP__}"></script>
+<script src="{$Think.config.__URI_PUB_STATIC__}index/js/my_collection.js{$Think.config.__TIMESTAMP__}"></script>

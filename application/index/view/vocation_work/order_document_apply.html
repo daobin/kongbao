@@ -1,0 +1,71 @@
+<div id="pageBody">
+    {:widget('user/sidebar')}
+    <div id="mainBody2">
+        <div class="mainBox2">
+            <h3>底单申请</h3>
+            <div class="cont">
+                <div class="notice3"><p style="text-align: center;"><strong><span style="color:#000000;"><span style="font-size:22px;">申请底单流程</span></span></strong></p>
+
+                    <p><span style="font-size:18px;"><span style="color:#000000;">如果您是在刷单过程被刷手申请退款的话建议您在这个举报网站（</span><a href="http://www.yiqijubao.com" target="_blank"><span style="color:#000000;">www.yiqijubao.com</span></a><span style="color:#000000;">）进行举报一下，让骗子无路可逃也可以让其他的商家避免上当受骗。</span></span></p>
+
+                    <p>&nbsp;</p>
+
+                    <p><span style="font-size:18px;"><span style="color:#000000;">申请宝贝降权表格 &nbsp; 《<a href="http://161856.com/kongbao/wj/%E4%BF%AE%E6%94%B9%E6%82%A8%E7%9A%84QQ%E5%8F%B7%E7%A0%81%EF%BC%88%E9%99%8D%E6%9D%83%E7%94%B3%E8%AF%B7%EF%BC%89.xls">点击下载表格</a>》</span></span></p>
+
+                    <p>&nbsp;</p>
+
+                    <p><span style="font-size:18px;"><span style="color:#000000;">申请宝贝退款表格 &nbsp; 《<a href="http://161856.com/kongbao/wj/%E4%BF%AE%E6%94%B9%E6%82%A8%E7%9A%84QQ%E5%8F%B7%E7%A0%81%EF%BC%88%E7%94%B3%E8%AF%B7%E9%80%80%E6%AC%BE%EF%BC%89.xls">点击下载表格</a>》</span></span></p>
+
+                    <p>&nbsp;</p>
+
+                    <p><span style="color:#000000;"><span style="font-size:18px;">严格按照格式填写后，文件名称修改为您的QQ号码，发给网站右边的在线客服。我们将会在最短的时间内发送给您。</span></span></p>
+
+                    <p>&nbsp;</p>
+
+                    <p>&nbsp;</p>
+
+                    <p>&nbsp;</p>
+
+                    <p style="text-align: center;"><span style="color:#000000;"><font size="4"><span style="line-height: 28px;">以下自动申请底单功能先不开放。</span></font></span></p>
+                </div>
+                <form id="formPost" novalidate="novalidate">
+                    <table width="100%" cellspacing="0" cellpadding="5" border="0">
+                        <tbody><tr>
+                            <td width="14%">底单类型：</td>
+                            <td width="86%">
+
+                                <select name="type" id="kd" onchange="getmyprice()" style="font-weight:bold; font-size:16px;"> <option value="0">----请选择快递类型----</option><option data-kdname="国通快递" value="45">国通快递</option><option data-kdname="龙邦速递" value="7">龙邦速递</option><option data-kdname="安能物流" value="62">安能物流</option><option data-kdname="增益速递" value="33">增益速递</option><option data-kdname="申通快递" value="54">申通快递</option><option data-kdname="江苏速通物流" value="82">江苏速通物流</option><option data-kdname="百世快递" value="74">百世快递</option><option data-kdname="龙邦快递" value="35">龙邦快递</option><option data-kdname="国通快递" value="42">国通快递</option><option data-kdname="申通快递" value="55">申通快递</option><option data-kdname="安能快递" value="58">安能快递</option><option data-kdname="亚风快运" value="67">亚风快运</option><option data-kdname="国通快递" value="66">国通快递</option><option data-kdname="百世快递" value="65">百世快递</option><option data-kdname="龙邦快递" value="68">龙邦快递</option><option data-kdname="亚风速递" value="69">亚风速递</option><option data-kdname="申通快递" value="72">申通快递</option><option data-kdname="圆通快递" value="81">圆通快递</option><option data-kdname="圆通快递" value="41">圆通快递</option></select>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>底单数量：</td>
+                            <td><input name="num" id="num" size="5" value="1" type="text"> <span id="numSpan" style="color:#999999">请输入您要做的底单数量</span></td>
+                        </tr>
+                        <tr>
+                            <td>底单信息：</td>
+                            <td>
+				<textarea id="cont" name="cont" cols="70" rows="10" style="visibility: hidden; display: none;">				&lt;p&gt;底单格式：机打/手写(请选择一个，默认机打)&lt;/p&gt;
+                &lt;p&gt;本人的联系QQ:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(以便发底单给)&lt;/p&gt;
+                &lt;p&gt;快递名称：&lt;/p&gt;
+                &lt;p&gt;运单号：&lt;/p&gt;
+                &lt;p&gt;发货信息：&lt;/p&gt;
+                &lt;p&gt;收货人信息：&lt;/p&gt;
+                &lt;p&gt;什么物品：&lt;/p&gt;
+                &lt;p&gt;发货日期：&lt;/p&gt;
+				&lt;p&gt;&lt;/p&gt;
+				&lt;p&gt;有多个底单，就把上面的信息复制一份，另起一行填写即可&lt;/p&gt;
+				</textarea><div id="cke_cont" class="cke_1 cke cke_reset cke_chrome cke_editor_cont cke_ltr cke_browser_gecko" dir="ltr" role="application" aria-labelledby="cke_cont_arialbl" style="width: 600px;" lang="zh-cn"><span id="cke_cont_arialbl" class="cke_voice_label">所见即所得编辑器, cont</span><div class="cke_inner cke_reset" role="presentation"><span id="cke_1_top" class="cke_top cke_reset_all" role="presentation" style="height: auto; -moz-user-select: none;"><span id="cke_9" class="cke_voice_label">工具栏</span><span id="cke_1_toolbox" class="cke_toolbox" role="group" aria-labelledby="cke_9" onmousedown="return false;"><span id="cke_12" class="cke_toolbar" role="toolbar"><span class="cke_toolbar_start"></span><span id="cke_10" class="cke_combo cke_combo__format  cke_combo_off" role="presentation"><span id="cke_10_label" class="cke_combo_label">格式</span><a class="cke_combo_button" hidefocus="true" title="格式" tabindex="-1" role="button" aria-labelledby="cke_10_label" aria-haspopup="true" onblur="this.style.cssText = this.style.cssText;" onkeydown="return CKEDITOR.tools.callFunction(3,event,this);" onmousedown="return CKEDITOR.tools.callFunction(5,event);" onfocus="return CKEDITOR.tools.callFunction(4,event);" onclick="CKEDITOR.tools.callFunction(2,this);return false;"><span id="cke_10_text" class="cke_combo_text cke_combo_inlinelabel">格式</span><span class="cke_combo_open"><span class="cke_combo_arrow"></span></span></a></span><span id="cke_11" class="cke_combo cke_combo__fontsize  cke_combo_off" role="presentation"><span id="cke_11_label" class="cke_combo_label">大小</span><a class="cke_combo_button" hidefocus="true" title="大小" tabindex="-1" role="button" aria-labelledby="cke_11_label" aria-haspopup="true" onblur="this.style.cssText = this.style.cssText;" onkeydown="return CKEDITOR.tools.callFunction(7,event,this);" onmousedown="return CKEDITOR.tools.callFunction(9,event);" onfocus="return CKEDITOR.tools.callFunction(8,event);" onclick="CKEDITOR.tools.callFunction(6,this);return false;"><span id="cke_11_text" class="cke_combo_text cke_combo_inlinelabel">大小</span><span class="cke_combo_open"><span class="cke_combo_arrow"></span></span></a></span><span class="cke_toolbar_end"></span></span><span id="cke_13" class="cke_toolbar" role="toolbar"><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_14" class="cke_button cke_button__image  cke_button_off" title="图像" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_14_label" aria-haspopup="false" onblur="this.style.cssText = this.style.cssText;" onkeydown="return CKEDITOR.tools.callFunction(10,event);" onfocus="return CKEDITOR.tools.callFunction(11,event);" onmousedown="return CKEDITOR.tools.callFunction(12,event);" onclick="CKEDITOR.tools.callFunction(13,this);return false;"><span class="cke_button_icon cke_button__image_icon" style="background-image:url(http://www.gogokb.com/ckeditor/plugins/icons.png?t=E2PC);background-position:0 -936px;background-size:auto;">&nbsp;</span><span id="cke_14_label" class="cke_button_label cke_button__image_label" aria-hidden="false">图像</span></a><a id="cke_15" class="cke_button cke_button__table  cke_button_off" title="表格" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_15_label" aria-haspopup="false" onblur="this.style.cssText = this.style.cssText;" onkeydown="return CKEDITOR.tools.callFunction(14,event);" onfocus="return CKEDITOR.tools.callFunction(15,event);" onmousedown="return CKEDITOR.tools.callFunction(16,event);" onclick="CKEDITOR.tools.callFunction(17,this);return false;"><span class="cke_button_icon cke_button__table_icon" style="background-image:url(http://www.gogokb.com/ckeditor/plugins/icons.png?t=E2PC);background-position:0 -1896px;background-size:auto;">&nbsp;</span><span id="cke_15_label" class="cke_button_label cke_button__table_label" aria-hidden="false">表格</span></a><a id="cke_16" class="cke_button cke_button__smiley  cke_button_off" title="表情符" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_16_label" aria-haspopup="false" onblur="this.style.cssText = this.style.cssText;" onkeydown="return CKEDITOR.tools.callFunction(18,event);" onfocus="return CKEDITOR.tools.callFunction(19,event);" onmousedown="return CKEDITOR.tools.callFunction(20,event);" onclick="CKEDITOR.tools.callFunction(21,this);return false;"><span class="cke_button_icon cke_button__smiley_icon" style="background-image:url(http://www.gogokb.com/ckeditor/plugins/icons.png?t=E2PC);background-position:0 -1056px;background-size:auto;">&nbsp;</span><span id="cke_16_label" class="cke_button_label cke_button__smiley_label" aria-hidden="false">表情符</span></a></span><span class="cke_toolbar_end"></span></span><span id="cke_17" class="cke_toolbar" role="toolbar"><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_18" class="cke_button cke_button__textcolor cke_button_off " title="文本颜色" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_18_label" aria-haspopup="true" onblur="this.style.cssText = this.style.cssText;" onkeydown="return CKEDITOR.tools.callFunction(22,event);" onfocus="return CKEDITOR.tools.callFunction(23,event);" onmousedown="return CKEDITOR.tools.callFunction(24,event);" onclick="CKEDITOR.tools.callFunction(25,this);return false;"><span class="cke_button_icon cke_button__textcolor_icon" style="background-image:url(http://www.gogokb.com/ckeditor/plugins/icons.png?t=E2PC);background-position:0 -408px;background-size:auto;">&nbsp;</span><span id="cke_18_label" class="cke_button_label cke_button__textcolor_label" aria-hidden="false">文本颜色</span><span class="cke_button_arrow"></span></a><a id="cke_19" class="cke_button cke_button__bgcolor cke_button_off " title="背景颜色" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_19_label" aria-haspopup="true" onblur="this.style.cssText = this.style.cssText;" onkeydown="return CKEDITOR.tools.callFunction(26,event);" onfocus="return CKEDITOR.tools.callFunction(27,event);" onmousedown="return CKEDITOR.tools.callFunction(28,event);" onclick="CKEDITOR.tools.callFunction(29,this);return false;"><span class="cke_button_icon cke_button__bgcolor_icon" style="background-image:url(http://www.gogokb.com/ckeditor/plugins/icons.png?t=E2PC);background-position:0 -384px;background-size:auto;">&nbsp;</span><span id="cke_19_label" class="cke_button_label cke_button__bgcolor_label" aria-hidden="false">背景颜色</span><span class="cke_button_arrow"></span></a></span><span class="cke_toolbar_end"></span></span></span></span><div id="cke_1_contents" class="cke_contents cke_reset" role="presentation" style="height: 380px;"><span id="cke_25" class="cke_voice_label">按 ALT+0 获得帮助</span><iframe src="" style="width: 100%; height: 100%;" class="cke_wysiwyg_frame cke_reset" title="所见即所得编辑器, cont" aria-describedby="cke_25" tabindex="0" allowtransparency="true" frameborder="0"></iframe></div><span id="cke_1_bottom" class="cke_bottom cke_reset_all" role="presentation" style="-moz-user-select: none;"><span id="cke_1_resizer" class="cke_resizer cke_resizer_vertical cke_resizer_ltr" title="拖拽以改变大小" onmousedown="CKEDITOR.tools.callFunction(0, event)">◢</span><span id="cke_1_path_label" class="cke_voice_label">元素路径</span><span id="cke_1_path" class="cke_path" role="group" aria-labelledby="cke_1_path_label"><span class="cke_path_empty">&nbsp;</span></span></span></div></div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td><input value="确认提交" id="btnPost" class="btn" type="submit"></td>
+                        </tr>
+                        </tbody></table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

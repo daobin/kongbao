@@ -1,0 +1,190 @@
+<div id="pageBody">
+    {:widget('user/sidebar')}
+    <div id="mainBody2">
+        <div class="mainBox2">
+            <h3>在线自助购买空包 单号 </h3>
+            <div class="content">
+                {notempty name="page_text"}
+                <div class="notice3">{$page_text.description}</div>
+                {/notempty}
+                <input type="hidden" id="ispdd" value="0" />
+                <form id="J_express_form">
+                    <div class="mainBox2">
+                        <h3 style="padding:5px 10px;">
+                            第一步：选择您的发货地址
+                            &nbsp;&nbsp;
+                            <input id="J_search_keywords" style="width:360px;height:28px;margin-top:0px"
+                                   placeholder="请输入姓名，电话或地址" type="text">&nbsp;
+                            <input id="J_search_btn" class="btn_check" style="width:100px;height:30px"
+                                   value="搜索" type="button">
+                        </h3>
+                        <div class="content">
+                            <select name="shipping_address_id" id="J_select_address"
+                                    style="width:600px; font-weight:bold; font-size:12px;"></select>
+                            <input name="button2" class="btn" id="J_set_default_address" value="设为默认" type="button">
+                        </div>
+                    </div>
+                    <div class="mainBox2">
+                        <h3 style="padding:10px;">第二步：选择快递类型</h3>
+                        <ul class="ulkc" style="display: none;">
+                            <li class="on">所有快递</li>
+                            <li>淘宝网</li>
+                            <li>天猫商城</li>
+                            <li>阿里巴巴</li>
+                            <li>京东商城</li>
+                        </ul>
+                        <div class="content">
+                            <input type="hidden" id="J_unit_price" name="price" value="" />
+                            <select name="price_id" id="J_select_express"
+                                    style="width:600px; font-weight:bold; font-size:12px;">
+                                <option data-tip="" data-price="0" value="0">请选择需要购买的快递公司物流</option>
+                                {notempty name="prices"}
+                                    {volist name="prices" id="price"}
+                                        {php}
+                                        $price['general_price'] = $price['general_price'] > 0 ? $price['general_price'] : $price['cost_price'];
+                                        $price['vip_price'] = $price['vip_price'] > 0 ? $price['vip_price'] : $price['cost_price'];
+                                        $price['agent_price'] = $price['agent_price'] > 0 ? $price['agent_price'] : $price['cost_price'];
+
+                                        $my_price = $price['general_price'];
+                                        switch((int)$user_info['user_level_id']){
+                                            case 2:
+                                                $my_price = $price['vip_price'];
+                                                break;
+                                            case 3:
+                                                $my_price = $price['agent_price'];
+                                                break;
+                                            default:
+                                                break;
+                                        }
+
+                                        $selected = '';
+                                        $price_tip = (isset($price_tip) && $price_tip != '') ? $price_tip : '';
+                                        if(isset($user_prices['pid_'.$price['price_id']])){
+                                            if($user_prices['pid_'.$price['price_id']]['fixed_price'] > 0){
+                                                $my_price = $user_prices['pid_'.$price['price_id']]['fixed_price'];
+                                            }
+                                            if((int)$user_prices['pid_'.$price['price_id']]['is_default']){
+                                                $selected = ' selected="selected" ';
+                                                $price_tip = $price['tip'];
+                                            }
+                                        }
+                                        {/php}
+                                <option data-tip="{$price.tip}" data-price="{$my_price}"
+                                        {$selected} value="{$price.price_id}">
+                                    {$price.title}
+                                    &nbsp;
+                                    普通会员：{$price.general_price}元
+                                    &nbsp;/&nbsp;
+                                    VIP会员：{$price.vip_price}元
+                                    &nbsp;/&nbsp;
+                                    代理：{$price.agent_price}元
+                                    &nbsp;/&nbsp;
+                                    我的价格：{$my_price}元
+                                </option>
+                                    {/volist}
+                                {/notempty}
+                            </select>
+                            <input name="button2" class="btn" id="J_set_default_express" value="设为默认" type="button">
+                        </div>
+                        <div id="J_express_tip" style="margin: 10px; color: red; font-weight: bold;">
+                            {$price_tip|default=''}
+                        </div>
+                    </div>
+                    <div class="mainBox3">
+                        <h3 class="red">第三步：请严格按样式图去复制地址提交，否则无法购买单号</h3>
+                        <div class="content">
+                            <img src="/public/static/index/image/buy_express_step3.jpg" width="700" height="130">
+                            <br/><br/>
+                            <span class="red">
+                                收货地址格式：刘得华，13814350008，北京 北京市 大兴区 黄村西大街228号 北京大学 ，102600
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mainBox3">
+                        <h3>第四步：填写收货地址↓可批量购买单号，每行一个地址，最多<span id="max">100</span>个地址<br>
+                        </h3>
+                        <div class="content">
+                            <textarea name="delivery_address" id="J_delivery_address" style="width: 700px; height: 250px;"></textarea>
+                            <div style="display: none;">
+                                商品名称：<input placeholder="衣服" value="" id="goodName" name="goodName"
+                                            style=" margin: 10px 0px 10px 0px;" type="text"> (必填)
+                                <a href="#URL" id="paichu"
+                                   style="width:120px;height:35px;line-height:35px;text-align:center;margin-left:20px;display:inline-block;border-radius:4px;background-color:#f75d39;color:#fff;">真实订单区分器</a>
+                                &nbsp;&nbsp;
+                                <a href="/News/Info_98300.html" target="_blank"
+                                   style="width:160px;height:35px;line-height:35px;text-align:center;margin-left:20px;display:inline-block;border-radius:4px;background-color:#f75d39;color:#fff;">点击下载快递上传模板</a>
+                            </div>
+                            <div>
+                                快递重量：
+                                <input type="text" value="0.5" name="kg" style="width: 40px; margin: 10px 0px 10px 0px; text-align: center" />
+                                公斤，本网站代发空包可按照顾客的重量发出，同步快递公司内网信息。
+                            </div>
+                            <ul class="ul_save">
+                                <li>
+                                    <input name="button" class="btn_check" id="J_chk_textarea_address"
+                                           value="检查收货地址" type="button" />
+                                </li>
+                                <li>
+                                    余额：
+                                    <strong><span style="color: #FF0000;">10.00</span></strong> 元，
+                                    【<strong><span style="color: #FF0000;"> {$user_info.user_level.level_name} </span></strong>】
+                                    下单：<span class="price J_unit_price">0.00</span>元/单。
+                                </li>
+                                <li style="display: none;">
+                                    <div id="uploadbtn" style="width:110px;" class="webuploader-container">
+                                        <div class="webuploader-pick">导入文件</div>
+                                        <div style="position: absolute; top: 0px; left: 0px; width: 86px; height: 34px; overflow: hidden; bottom: auto; right: auto;">
+                                            <input name="file" class="webuploader-element-invisible" multiple="multiple"
+                                                   accept="application/xls,application/csv,application/xlsx"
+                                                   type="file">
+                                            <label style="opacity: 0; width: 100%; height: 100%; display: block; cursor: pointer; background: rgb(255, 255, 255) none repeat scroll 0% 0%;"></label>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li style="display: none;">
+                                    <a href="javascript:void(0);" target="_blank">导入操作教程&gt;&gt;</a>
+                                </li>
+                            </ul>
+                            <table id="tb_addrs" style="display: none">
+                                <thead>
+                                <tr id="tb">
+                                    <th style="width: 5%">序号</th>
+                                    <th style="width: 15%">收货人</th>
+                                    <th style="width: 15%">收货电话</th>
+                                    <th style="width: 55%">收货地址</th>
+                                    <th style="width: 10%">邮编</th>
+                                </tr>
+                                <tr style="display:none" id="pdd">
+                                    <th style="width: 5%">序号</th>
+                                    <th style="width: 15%">收货人</th>
+                                    <th style="width: 15%">收货电话</th>
+                                    <th style="width: 40%">收货地址</th>
+                                    <th style="width: 10%">邮编</th>
+                                    <th style="width: 15%">订单号</th>
+                                </tr>
+                                </thead>
+                                <tbody id="ty_addrs"></tbody>
+                                <tfoot>
+                                <tr>
+                                    <td id="td_total" colspan="5" style="text-align: center; color: red;">
+                                        <span id="num">0</span> X <span class="price J_unit_price">0.00</span>
+                                         =
+                                        <span id="result"></span>元
+                                    </td>
+                                </tr>
+
+                                </tfoot>
+                            </table>
+                            <div class="clear"></div>
+                            <div class="btn_box">
+                                <input name="button" class="btn_buy" id="J_form_submit" value="确认购买" type="button">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{$Think.config.__URI_PUB_STATIC__}index/js/address.js{$Think.config.__TIMESTAMP__}"></script>
+<script src="{$Think.config.__URI_PUB_STATIC__}index/js/buy_express.js{$Think.config.__TIMESTAMP__}"></script>

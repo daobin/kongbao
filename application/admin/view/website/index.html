@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        {notempty name="cfg_list"}
+        <form method="post" enctype="multipart/form-data" autocomplete="off">
+            {volist name="cfg_list" id="cfg"}
+            <div class="form-group">
+                <label>{$cfg.description}</label>
+                {switch name="cfg.show_type"}
+                    {case value="textarea"}
+                        <textarea class="form-control" name="cfg_data[{$cfg.key}]">{$cfg.value|default=''}</textarea>
+                    {/case}
+                    {case value="img"}
+                        <br/>
+                        {if condition="trim($cfg['value']) != ''"}
+                        <img src="{$cfg.value}" style="display: inline-block; border: none; width: 120px; height: auto;" />
+                        {/if}
+                        <input type="file" name="website_logo" style="display: inline-block;" />
+                    {/case}
+                    {case value="password"}
+                    <input class="form-control" type="password" name="cfg_data[{$cfg.key}]"
+                           value="{$cfg.value|default=''}" />
+                    {/case}
+                    {default/}
+                        <input class="form-control" type="text" name="cfg_data[{$cfg.key}]"
+                               value="{$cfg.value|default=''}" />
+                {/switch}
+            </div>
+            {/volist}
+            <div class="form-group margin-top30">
+                <input class="btn btn-primary" type="submit" value="保存" />
+            </div>
+        </form>
+        {/notempty}
+    </div>
+</div>

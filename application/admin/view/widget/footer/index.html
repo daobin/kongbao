@@ -1,0 +1,9 @@
+<div id="footer">
+    <span>版权所有</span>
+    <span class="copy">&copy;</span>
+    <span>{:date('Y')}</span>
+    <span>{$Think.WEBSITE_NAME}</span>
+</div>
+{volist name="js_srcs" id="js_src"}
+<script src="{$Think.config.__URI_PUB_STATIC__}{$js_src}{$Think.config.__TIMESTAMP__}"></script>
+{/volist}

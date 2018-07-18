@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <form method="post" autocomplete="off">
+            <div class="form-group">
+                <ul>
+                    {volist name="center_navs" id="group_nav"}
+                    <li style="display: block; margin-bottom: 30px;">
+                        <b>{$group_nav.group_name}</b>
+                        {notempty name="group_nav.navs"}
+                        <div style="margin-left: 30px;">
+                            {volist name="group_nav.navs" id="route_nav"}
+                            <div class="checkbox">
+                                <label>
+                                    {php}
+                                    $checked = '';
+                                    if(isset($routes[$route_nav['route']])){
+                                        $checked = ' checked ';
+                                    }
+                                    {/php}
+                                    <input type="checkbox" {$checked}
+                                           name="routes[{$group_nav.group_key}][{$route_nav.route}]"
+                                           value="{$route_nav.name}" />
+                                    {$route_nav.name}
+                                </label>
+                            </div>
+                            {/volist}
+                        </div>
+                        {/notempty}
+                    </li>
+                    {/volist}
+                </ul>
+            </div>
+            <div class="form-group margin-top30">
+                <input class="btn btn-primary" type="submit" value="保存" />
+            </div>
+        </form>
+    </div>
+</div>

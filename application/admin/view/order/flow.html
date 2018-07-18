@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="row">
+        <ul class="nav nav-tabs J_nav_tab_btn">
+            <li class="{$sale_active}"><a href="?active_data=sale">已销售</a></li>
+            <li class="{$delivery_active}"><a href="?active_data=delivery">已发货</a></li>
+            <li class="{$complete_active}"><a href="?active_data=complete">已完成</a></li>
+            <li class="{$cancel_active}"><a href="?active_data=cancel">已取消</a></li>
+        </ul>
+        <div class="nav-tabs-content J_nav_tab_content">
+            <div class="active">
+                <div class="form-group">
+                    <select class="form-control width500" name="title_id" id="J_flow_select">
+                        <option value="0">--请选择流量--</option>
+                        {volist name="prices" id="price"}
+                            {if condition="(int)$title_id == (int)$price['title_id']"}
+                        <option value="{$price.title_id}" selected>{$price.title}</option>
+                            {else/}
+                        <option value="{$price.title_id}">{$price.title}</option>
+                            {/if}
+                        {/volist}
+                    </select>
+                </div>
+                <form class="form-inline margin-top30">
+                    <div class="form-group">
+                        <select name="s_key" class="form-control width200">
+                            <option {eq name="s_key" value="user_account"}selected {/eq}
+                            value="user_account">购买用户</option>
+                            <option {eq name="s_key" value="title"}selected {/eq}
+                            value="title">流量套餐</option>
+                        </select>
+                        <input type="text" name="s_val" class="form-control width500"
+                               placeholder="请输入左侧选项对应的搜索值" value="{$s_val|default=''}" />
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="active_data" value="{$active_data}" />
+                        <input type="submit" class="btn btn-primary" value="搜索" />
+                    </div>
+                </form>
+                <table class="table table-bordered margin-top30">
+                    <tr>
+                        <th class="text-center">购买用户</th>
+                        <th class="text-center">订单号</th>
+                        <th class="text-center">流量套餐</th>
+                        <th class="text-center">店铺</th>
+                        <th class="text-center">关键词</th>
+                        <th class="text-center">宝贝地址</th>
+                        <th class="text-center">购买时间</th>
+                    </tr>
+                    {volist name="orders" id="order"}
+                    <tr>
+                        <td class="text-center">{$order.user.user_account}</td>
+                        <td class="text-center">{$order.order_number|default='--'}</td>
+                        <td class="text-center">{$order.title}</td>
+                        <td class="text-center">{$order.shop_name}</td>
+                        <td>{$order.shop_keywords}</td>
+                        <td class="text-center">
+                            {notempty name="order.shop_url"}
+                            <a href="{$order.shop_url}" target="_blank" class="btn btn-sm btn-info">点击查看</a>
+                            {else/}{$order.shop_product_id}{/notempty}
+                        </td>
+                        <td class="text-center">{$order.gmt_create}</td>
+                    </tr>
+                    {/volist}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('#J_flow_select').change(function () {
+        window.location.href = '?active_data={$active_data}&title_id=' + $.trim($(this).val());
+    });
+</script>

@@ -1,0 +1,51 @@
+<div id="pageBody">
+    {:widget('user/sidebar')}
+    <div id="mainBody2">
+        <div class="mainBox2">
+            <h3> 流量购买记录 </h3>
+            <div class="content">
+                <div class="notice3"><p><span style="color:#000000;"><span style="font-size:16px;">购买流量以后的订单有四个状态：等待处理、处理中、处理完成、已取消。</span></span></p>
+
+                    <p><br>
+                        <span style="color:#000000;"><span style="font-size:16px;">等待处理：购买以后就是这个状态的，等待我们的专业客服进行处理。</span></span></p>
+
+                    <p>&nbsp;</p>
+
+                    <p><span style="color:#000000;"><span style="font-size:16px;">处理完成：您所购买的套餐我们已经帮您完成了。</span></span></p>
+
+                    <p>&nbsp;</p>
+
+                    <p><span style="color: rgb(0, 0, 0); font-size: 16px; line-height: 25.6px;">处理中：证明我们已经在帮您开始操作了。</span></p>
+
+                    <p><br>
+                        <span style="color:#000000;"><span style="font-size:16px;">已取消：一般是顾客要求退款，或填写有误。这个状态的钱是自动退款给您的。</span></span></p>
+
+                    <p>&nbsp;</p>
+
+                    <p><strong><span style="color:#FF0000;"><span style="font-size:16px;">提醒：在套餐服务的时间内可以随时联系客服进行更换关键词或宝贝链接修改。</span></span></strong></p>
+                </div>
+                <table class="tab" width="100%" cellspacing="0" cellpadding="0" border="0">
+                    <tbody><tr>
+                        <td>
+                            <ul class="startul" id="J_tab_o_status">
+                                <li class="startulli curr" data-ostatus="1">等待处理</li>
+                                <li class="startulli" data-ostatus="2">进行处理</li>
+                                <li class="startulli" data-ostatus="3">完成处理</li>
+                                <li class="startulli" data-ostatus="4">取消任务</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <input type="hidden" id="J_o_status" value="1"/>
+                <table id="J_list_flow" class="tab2" width="100%" cellspacing="0" cellpadding="0" border="0">
+                    <tr>
+                        <th> 已买流量 </th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{$Think.config.__URI_PUB_STATIC__}index/js/order.js{$Think.config.__TIMESTAMP__}"></script>
+<script src="{$Think.config.__URI_PUB_STATIC__}index/js/my_flow.js{$Think.config.__TIMESTAMP__}"></script>

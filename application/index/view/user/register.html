@@ -1,0 +1,112 @@
+<div class="band_user">
+    <form id="formRegist" method="post" autocomplete="off">
+        <dl>
+            <dt>快速注册</dt>
+            <dd>
+                <ul>
+                    <li>
+                        <label>用&nbsp;&nbsp;户&nbsp;&nbsp;名：</label>
+                        <input class="input validate[required,minSize[3],maxSize[16]]"
+                               data-errormessage-value-missing="用户名长度必须为6-16位字符"
+                               id="name" name="name" type="text" />
+                        <span id="usernameSpan">用户名由至少6位数字或字母组成</span>
+                    </li>
+                    <li>
+                        <label>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码&nbsp;&nbsp;：</label>
+                        <input class="input validate[required,minSize[6],maxSize[16]]"
+                               data-errormessage-value-missing="密码长度必须为6-16位字符"
+                               id="pwd" name="pwd" type="password" />
+                        <span id="passwordSpan">密码由至少6位数字或字母组成</span>
+                    </li>
+                    <li>
+                        <label>确认密码：</label>
+                        <input class="input validate[required,equals[pwd]]"
+                               data-errormessage-value-missing="密码不一致"
+                               id="repwd" name="repwd" type="password" />
+                        <span id="repasswordSpan">再次输入密码</span>
+                    </li>
+                    <li>
+                        <label>联&nbsp;系&nbsp;QQ：</label>
+                        <input class="input validate[required,custom[number],minSize[5],maxSize[13]]"
+                               data-errormessage-value-missing="请输入正确的QQ号码"
+                               id="qq" name="qq" type="text" />
+                        <span id="qqSpan">输入QQ号码</span>
+                    </li>
+                    <li>
+                        <label>E-mail&nbsp;&nbsp;：</label>
+                        <input class="input validate[required,custom[email]]"
+                               data-errormessage-value-missing="请输入正确的邮箱地址"
+                               id="email" name="email" type="text" />
+                        <span id="emailSpan">输入E-mail</span>
+                    </li>
+                    <li>
+                        <label>验&nbsp;证&nbsp;码：</label>
+                        <input class="input verify validate[required]"
+                               data-errormessage-value-missing="请输入验证码"
+                               id="code" name="code" type="text" />
+                        <span id="checkcodeSpan">输入验证码
+                            <img src="{:captcha_src()}?{:uniqid()}" id="imgcode" style="cursor: pointer;" />
+                        </span>
+                    </li>
+                    <li class="mt30">
+                        <label>&nbsp;</label>
+                        <input id="btnSubmit" name="btnSubmit" class="btn_band" value="确认注册" type="submit" />
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+    </form>
+</div>
+<script>
+    $('#imgcode').click(function () {
+        $('#imgcode').prop('src', '/captcha.html?' + Math.random());
+    });
+
+    $("#qq").blur(function () {
+        $("#email").val($.trim($("#qq").val()) + "@qq.com");
+    });
+
+    $("#formRegist").validationEngine('attach', {
+        onValidationComplete: function (form, status) {
+            if (status == true) {
+                //表单验证通过
+                $("#formRegist").ajaxSubmit({
+                    url: "{:url('ajax/index.user/register')}",
+                    type: 'post',
+                    dataType: 'json',
+                    success: function (res) {
+                        if (res.status == 'success') {
+                            layer.alert("注册成功", "1", function () {
+                                window.location.href = "{:url('index/user/login')}";
+                            });
+                            return false;
+                        }
+
+                        var data = $.trim(res.msg);
+                        if (data == "name") {
+                            layer.alert("用户名已经被注册");
+                        } else if (data == "code") {
+                            $('#code').val('');
+                            $('#imgcode').prop('src', '/captcha.html?' + Math.random());
+                            layer.alert("验证码错误");
+                        } else {
+                            layer.alert(data);
+                        }
+
+                    },
+                    error: function (data, status, e) {
+                        console.log('********** Ajax Submit Error **********');
+                    }
+                });
+            }
+        }
+
+    });
+
+    //键盘事件,点击回车提交登陆表单
+    $(document).keydown(function (e) {
+        if (e.keyCode == 13) {
+            $("#btnSubmit").click();
+        }
+    });
+</script>

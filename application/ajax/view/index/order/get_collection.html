@@ -1,0 +1,18 @@
+{volist name="collection_list" id="collection"}
+<tr class="pageBox J_order_collection">
+    <td>
+        <p>套餐名称：{$collection.title}</p>
+        <p>订单编号：{$collection.order_number}</p>
+        <p>店铺名称：{$collection.shop_name}</p>
+        <p>关&nbsp;&nbsp;键&nbsp;&nbsp;词：<font>{$collection.shop_keywords}</font></p>
+        <p style="width:720px">商品ID：{$collection.shop_product_id|default=$collection.shop_url}</p>
+        <p>订单状态：<span class="red">{$collection.status_text}</span></p>
+        <h4>购买金额：{$collection.buy_price}，购买时间：{$collection.gmt_create}</h4>
+    </td>
+</tr>
+{/volist}
+{notempty name="collection_list"}
+<tr class="J_order_collection">
+    <td>{$collection_list->render()}</td>
+</tr>
+{/notempty}

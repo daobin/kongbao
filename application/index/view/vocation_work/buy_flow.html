@@ -1,0 +1,194 @@
+<div id="pageBody">
+    {:widget('user/sidebar')}
+    <div id="mainBody2">
+        <div class="mainBox2">
+            <h3>在线自助购买流量 </h3>
+            <div class="content">
+                <div class="notice3"><div><span style="font-size:12px;"><span style="color:#0000FF;">购买流量资料填写规则<span style="white-space:pre">&nbsp;</span></span></span></div>
+
+                    <div><span style="font-size:12px;"><span style="color:#0000FF;"><strong>第一行</strong>：填写店铺名称（如XX旗舰店）<span style="white-space:pre">&nbsp;</span></span></span></div>
+
+                    <div><span style="font-size:12px;"><span style="color:#0000FF;"><strong>第二行</strong>：填写关键词，多个关键词用逗号隔开。（如链接一：关键词1，关键词2；链接2：关键词1，关键词2）<span style="white-space:pre">&nbsp;</span></span></span></div>
+
+                    <div><span style="font-size:12px;"><span style="color:#0000FF;"><strong>第三行</strong>：填写商品链接或者商品ID，用逗号隔开。（套餐支持几款宝贝，在套餐下方的红字提醒看，没有写的就是只支持一款）<span style="white-space:pre">&nbsp;</span></span></span></div>
+
+                    <div>&nbsp;</div>
+
+                    <div><span style="font-size:12px;"><span style="color:#000000;"><strong>电脑端流量</strong>­(刷手通过电脑搜索关键词后主产品浏览1~­­­3分钟后部，随机浏览店铺其他产品1~­­3款副宝贝，套餐上有收藏的就增加收藏）</span></span></div>
+
+                    <div><span style="font-size:12px;"><span style="color:#000000;"><strong>手机端流量</strong>­（刷手通过手机APP搜索关键词，货比三家后，进入主产品浏览1~­­3分钟后，随机浏览店铺其他产品1­­~2款副宝贝，套餐上有收藏的会增加收藏，权重更高）<span style="white-space:pre">&nbsp;</span></span></span></div>
+
+                    <div><span style="font-size:12px;"><span style="color:#000000;"><strong>混合端流量</strong>（刷手通过手机或者电脑搜索关键词，货比三家后，进入主宝贝浏览1~­­3分钟左右，收藏，加购物车或者关注店铺，再浏览其他1~­­3款副宝贝）<span style="white-space:pre">&nbsp;</span></span></span></div>
+
+                    <div>&nbsp;</div>
+
+                    <div><span style="font-size:12px;"><span style="color:#0000FF;"><strong>着重提醒</strong>：&nbsp;&nbsp;&nbsp;电脑端流量会过滤，当天做100个流量，隔天看可能只显示50~­­­80左右，介意勿购<span style="white-space:pre">&nbsp;</span></span></span></div>
+
+                    <div><span style="font-size:12px;"><span style="color:#0000FF;">做手机流量的号都是V2以上，淘气值在400~­­­1000，浏览深度高，跳失率低，优化效果最佳</span></span></div>
+
+                    <div><span style="font-size:12px;"><span style="color:#0000FF;">定制套餐：本站提供了一个自定义套餐的模板，</span><strong><a href="http://img.161856.com/zj/%E6%B7%98%E5%AE%9D%E9%80%92%E5%A2%9E%E5%A5%97%E9%A4%90%E6%96%87%E6%A1%A3.xlsx"><span style="color:#0000FF;">淘宝递增流量点击下载</span></a></strong><span style="color:#0000FF;">，</span><strong><a href="http://img.161856.com/zj/%E6%8B%BC%E5%A4%9A%E5%A4%9A%E9%80%92%E5%A2%9E%E5%A5%97%E9%A4%90%E6%96%87%E6%A1%A3.xlsx"><span style="color:#0000FF;">拼多多递增流量点击下载</span></a></strong><span style="color:#0000FF;">。<span style="white-space:pre">&nbsp;</span></span></span></div>
+
+                    <div><span style="font-size:12px;"><span style="color:#0000FF;">如果有商家不满意这些套餐，有自己的想法，可以做一个EXCEL表格，自定义套餐内容，发给在线客服，客服计价后引导下单</span></span></div>
+                </div>
+
+                <form id="J_flow_form" method="post">
+                    <div class="mainBox2">
+                        <h3>第一步：选择平台类型</h3>
+                        <ul class="startul" id="J_tab_type">
+                            {volist name="type_list" id="type"}
+                                {php}if(strpos($type['type'], '拼多多') !== false){continue;}{/php}
+                                {eq name="key" value="0"}
+                            <li class="startulli curr" data-typeid="{$type.type_id}">{$type.type}</li>
+                                {else/}
+                            <li class="startulli" data-typeid="{$type.type_id}">{$type.type}</li>
+                                {/eq}
+                            {/volist}
+                        </ul>
+                    </div>
+                    <div class="mainBox2">
+                        <h3>第二步：选择流量套餐服务</h3>
+                        <div>
+                            <select name="price_id" id="J_select_flow" style="font-weight:bold; font-size:16px; width: 100%;">
+                                {volist name="prices" id="price"}
+                                    {php}
+                                    $price['general_price'] = $price['general_price'] > 0 ? $price['general_price'] : $price['cost_price'];
+                                    $price['vip_price'] = $price['vip_price'] > 0 ? $price['vip_price'] : $price['cost_price'];
+                                    $price['agent_price'] = $price['agent_price'] > 0 ? $price['agent_price'] : $price['cost_price'];
+
+                                    $my_price = $price['general_price'];
+                                    switch((int)$user_info['user_level_id']){
+                                        case 2:
+                                            $my_price = $price['vip_price'];
+                                            break;
+                                        case 3:
+                                            $my_price = $price['agent_price'];
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    $unit_price = isset($unit_price) ? $unit_price : $my_price;
+                                    $price_tip = (isset($price_tip) && $price_tip != '') ? $price_tip : $price['tip'];
+                                    $class_hidden = ' hidden ';
+                                    if((int)$price['type_id'] == (int)$type_id){
+                                        $class_hidden = '';
+                                    }
+                                    {/php}
+                                <option data-tip="{$price.tip}" data-price="{$my_price}"
+                                        class="{$class_hidden} J_price_type_{$price.type_id}" value="{$price.price_id}">
+                                    {$price.title}
+                                    &nbsp;
+                                    普通会员：{$price.general_price}元
+                                    &nbsp;/&nbsp;
+                                    VIP会员：{$price.vip_price}元
+                                    &nbsp;/&nbsp;
+                                    代理：{$price.agent_price}元
+                                </option>
+                                {/volist}
+                            </select>
+                            <input type="hidden" id="J_unit_price" name="price" value="{$unit_price}" />
+                        </div>
+                        <div id="J_tip_price" style="text-indent: 10px; margin: 10px 0px 10px 0px; color: red; font-weight: bold">
+                            {$price_tip|default=''}
+                        </div>
+                    </div>
+
+                    <div class="mainBox2">
+                        <h3>第三步：填写来路信息</h3>
+                        <div class="content">
+                            <ul class="flow-ul">
+                                <li>
+                                    <input type="text" name="shop_name"
+                                           placeholder="请填写店铺名称" style="width: 500px" />
+                                </li>
+                                <li>
+                                    <ol>
+                                        <li class="LikeyWord">
+                                            <input type="text" name="shop_keywords"
+                                                   placeholder="请填写关键词，如有多个关键词请用逗号隔开" style="width: 500px" />
+                                            <input type="text" name="shop_url"
+                                                   placeholder="请填写商品链接" style="width: 500px; margin-top: 5px" />
+                                        </li>
+                                    </ol>
+                                </li>
+
+                                <li style="color: red">注：关键词最多可以添加5个，用逗号隔开。</li>
+                                <li>
+                                    <input id="J_form_submit" class="btn" value="确认购买" type="button">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mainBox2">
+                        <h3>购买必知</h3>
+                        <p><span style="font-size: 16px; line-height: 1.6;">问：下单流程，什么时候安排。</span></p>
+
+                        <p><span style="font-size:16px;">答：<span style="color:#FF0000;">下单完24小时内安排开始，正常是早上下单，下午可以给您安排好，晚上下单一般是明天早上给您找主持安排好浏览单。 尽量错开下单高峰期，最好晚上下单，我们也能有充分时间给亲安排好明天的浏览任务，当天18:00之前的订单当天处理，过18:00的隔天安排。</span></span></p>
+
+                        <p>&nbsp;</p>
+
+                        <p><span style="font-size:16px;">问：下单后，怎么看你们是否已经安排了。<br>
+答：<span style="color:#FF0000;">下单后，我们这边接受到订单安排好后，后台会显示在处理中。</span></span></p>
+
+                        <p>&nbsp;</p>
+
+                        <p><span style="font-size:16px;">问：我是新手或者想让我们给您安排，不会安排关键词这些，你们可以帮我安排吗？<br>
+答：<span style="color:#FF0000;">可以的，只要在关键词选项：填写（主持安排），这边会帮您安排您需要的关键词，中途如果想换，可以联系客服，帮您修改关键词。</span></span></p>
+
+                        <p>&nbsp;</p>
+
+                        <p><span style="font-size:16px;">问：你们安排的浏览单，会不会是在一个时间段全部都进来。<br>
+答：<span style="color:#FF0000;">这点您放心，我们流量是给您一整天均匀给您安排浏览单。</span></span></p>
+
+                        <p><br>
+                            <span style="font-size:16px;"><strong><span style="font-size:18px;">常见问题：</span></strong></span></p>
+
+                        <p><span style="font-size:16px;">问：你们流量是怎么放的，在哪里放的。<br>
+答：<span style="color:#FF0000;">我们是在各大刷手密集的平台给您放的浏览单。</span></span></p>
+
+                        <p>&nbsp;</p>
+
+                        <p><span style="font-size:16px;">问：你们放的浏览是通过关键词搜索进入的，还是直接链接进入的？<br>
+答：<span style="color:#FF0000;">刷手通过关键词搜索进主宝贝浏览1分钟左右，再随机浏览1-3款副宝贝，有收藏的收藏，有购物车的加车。后台 生意参谋可查询。</span></span></p>
+
+                        <p>&nbsp;</p>
+
+                        <p><span style="font-size:16px;">问：流量会不会不安全？<br>
+答：<span style="color:#FF0000;">流量如果能让店铺降权的话，那随便投放流量到同行店铺让同行降权，那淘宝就乱了。</span></span></p>
+
+                        <p>&nbsp;</p>
+
+                        <p><span style="font-size:16px;">问：那对商品有没有什么效果&nbsp;<br>
+答：<span style="color:#FF0000;">第一：流量配合刷单 控制转化率可以降低宝贝因刷单被降权的风险。第二：宝贝搜索热度能提升宝贝搜索排名。</span></span></p>
+
+                        <p>&nbsp;</p>
+
+                        <p><span style="font-size:16px;">问：我是新店，刚开始不久或者老店很久没打理想刷单又怕系统勘查。<br>
+答：<span style="color:#FF0000;">这个看您要以什么方面来购买这份流量，如果只是单纯要逃过系统勘查刷单，那购买PC的即可，如果是想通过流量来做升权重，排名的，可以试试混合流量，有PC/APP流量浏览中一部分刷手会给您浏览后收藏跟加入购物车来提升宝贝的权重。</span></span></p>
+
+                        <p>&nbsp;</p>
+
+                        <p><span style="font-size:16px;">问：我一天刷10几单，大概需要购买多少流量才能不被系统勘查。<br>
+答：<span style="color:#FF0000;">要逃避系统勘查，这方面您要查看您本身行业的转化率，正常大部分行业转化率不要超过百分之10%。也就是说我如果刷10单 大概也就是需要100多左右浏览，逃过系统勘查。</span></span></p>
+
+                        <p>&nbsp;</p>
+
+                        <p><span style="font-size:16px;">问：那么我怎么辨别是你们做的流量还是真实顾客的流量。<br>
+答：<span style="color:#FF0000;">生意参谋里可以看到关键词对应下的访客人数，有明显的效果。</span></span></p>
+
+                        <p>&nbsp;</p>
+
+                        <p><span style="font-size:16px;">问：你们跟这么多平台合作，单肯定很多，会不会造成单多，而导致质量下降?<br>
+答：<span style="color:#FF0000;">这点您放心，我们是接单后，会分配给主持给您放单，现合作的主持有200多名。保质保量，这点您放心。&nbsp;</span></span></p>
+
+                        <p>&nbsp;</p>
+
+                        <p><strong><span style="font-size:16px;">搜索的关键词确保在前1-30页 可卡价钱或地区，中途因修改关键词或者其他操作导致任务浏览失败的或者中途想换词或链接的 联系客服 （浏览失败不计入天数）关键词可卡价钱，卡地区要求可在关键词后面备注一下。</span></strong></p>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{$Think.config.__URI_PUB_STATIC__}index/js/buy_flow.js{$Think.config.__TIMESTAMP__}"></script>

@@ -1,0 +1,22 @@
+<meta charset="UTF-8" />
+
+<title>{$tkd.title|default=''}</title>
+<meta name="keywords" content="{$tkd.keywords|default=''}"/>
+<meta name="description" content="{$tkd.description|default=''}"/>
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+<link rel="shortcut icon" href="/favicon.ico" />
+
+{volist name="css_hrefs" id="css_href"}
+<link rel="stylesheet" href="{$Think.config.__URI_PUB_STATIC__}{$css_href}{$Think.config.__TIMESTAMP__}" />
+{/volist}
+
+<script src="{$Think.config.__URI_PUB_STATIC__}jquery/jquery-1.11.0.min.js"></script>
+<script src="{$Think.config.__URI_PUB_STATIC__}jquery/jquery-ui-1.10.4.js"></script>
+<script src="{$Think.config.__URI_PUB_STATIC__}jquery/jquery-form-4.1.0.js"></script>
+
+<script src="{$Think.config.__URI_PUB_STATIC__}index/js/layer.min.js"></script>
+<script src="{$Think.config.__URI_PUB_STATIC__}index/js/jquery.validationEngine.min.js"></script>
+<script src="{$Think.config.__URI_PUB_STATIC__}index/js/jquery.validationEngine-zh_CN.js"></script>

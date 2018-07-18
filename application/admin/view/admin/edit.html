@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <form method="post" autocomplete="off">
+            <div class="form-group">
+                <label>管理员账号</label>
+                {notempty name="admin"}
+                <input class="form-control dv_word" type="text" maxlength="30"
+                       name="account" value="{$admin.account}" readonly />
+                {else/}
+                <input class="form-control dv_word" type="text" maxlength="30"
+                       name="account" placeholder="账号保存后不允许再次修改" />
+                {/notempty}
+            </div>
+            <div class="form-group">
+                <label>管理员密码</label>
+                <input class="form-control dv_word" type="password" maxlength="30"
+                       name="password" placeholder="账号存在时可不填写，填写则表示重置密码" />
+            </div>
+            <div class="form-group margin-top30">
+                <input type="hidden" name="admin_id" value="{$admin.admin_id}" />
+                <input type="hidden" name="admin_group_id" value="1" />
+                <input class="btn btn-primary" type="submit" value="保存" />
+                <span class="padding-right20"></span>
+                <a href="{:url('admin/admin/index')}">
+                    <input type="button" class="btn btn-info" value="返回列表页" />
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="row">
+        <form method="post" autocomplete="off" id="J_Category_Form">
+            <table class="table table-bordered">
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">分类名称</th>
+                    <th class="text-center">排序</th>
+                    <th class="text-center">展示状态</th>
+                </tr>
+                {volist name="categories" id="category"}
+                <tr>
+                    <td class="text-center">{$category.category_id}</td>
+                    <td class="text-center">
+                        <input type="text" class="form-control" maxlength="60"
+                               name="names[{$category.category_id}]" value="{$category.category_name}" />
+                    </td>
+                    <td class="text-center width100">
+                        <input type="text" class="form-control dv_int" maxlength="6"
+                               name="sorts[{$category.category_id}]" value="{$category.sort}" />
+                    </td>
+                    <td class="text-center">
+                        {php}
+                        $checked_on = '';
+                        $checked_off = '';
+                        if(isset($category['status']) && (int)$category['status'] == 1){
+                            $checked_on = ' checked="checked" ';
+                        }else{
+                            $checked_off = ' checked="checked" ';
+                        }
+                        {/php}
+                        <input type="radio" name="status[{$category.category_id}]" {$checked_on} value="1" />开启
+                        <span class="padding-right20"></span>
+                        <input type="radio" name="status[{$category.category_id}]" {$checked_off} value="0" />关闭
+                    </td>
+                </tr>
+                {/volist}
+                <tr id="J_Category_Tpl" class="display-none">
+                    <td class="text-center">#</td>
+                    <td class="text-center">
+                        <input type="text" class="form-control" maxlength="60" name="names[__I__]" />
+                    </td>
+                    <td class="text-center width100">
+                        <input type="text" class="form-control dv_int" maxlength="6" name="sorts[__I__]" />
+                    </td>
+                    <td class="text-center">
+                        <input type="radio" name="status[__I__]" checked value="1" />开启
+                        <span class="padding-right20"></span>
+                        <input type="radio" name="status[__I__]" value="0" />关闭
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div class="row margin-top30">
+        <a href="javascript:void(0);" class="btn btn-primary pull-left" id="J_Category_Save">保存</a>
+        <a href="javascript:void(0);" class="btn btn-info pull-right J_Add_Category">新增分类</a>
+    </div>
+</div>
+<script>
+    var add_index = 0;
+    $('.J_Add_Category').click(function(){
+        var tr_html = '<tr>' + ($('#J_Category_Tpl').html()) + '</tr>';
+        tr_html = tr_html.replace(/__I__/g, 'i_' + add_index);
+        $('#J_Category_Form table').append(tr_html);
+        add_index++;
+    });
+
+    $('#J_Category_Save').click(function(){
+        $('#J_Category_Form').submit();
+    });
+</script>

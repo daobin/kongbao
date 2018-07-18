@@ -1,0 +1,121 @@
+<div id="pageBody">
+    {:widget('user/sidebar')}
+    <div id="mainBody2">
+        <div class="mainBox2">
+            <h3> 接口说明 </h3>
+            <div class="content">
+                <div class="notice3">
+                    <p>
+                        <strong>
+                            <span style="color:#FF0000;">
+                                <span style="font-size:16px;">
+                                    如果您有自己的网站，不管是（刷单平台、类似淘宝论坛、货源网站）等~~
+                                </span>
+                            </span>
+                        </strong>
+                    </p>
+
+                    <p>&nbsp;</p>
+
+                    <p>
+                        <strong>
+                            <span style="color:#FF0000;">
+                                <span style="font-size:16px;">
+                                    只要你的网站是有淘宝或京东卖家的地方都是可以销售空包、流量、收藏、购物车、等本站的所有产品。
+                                    您只需要在您的网站开发一个可以让客户下单的功能然后对接我们的API就可以的了。
+                                </span>
+                            </span>
+                        </strong>
+                    </p>
+
+                    <p>&nbsp;</p>
+
+                    <p>
+                        <strong>
+                            <span style="color:#FF0000;">
+                                <span style="font-size:16px;">
+                                    您客户购买以后直接传达到我们的网站，我们每天都会帮助您去发货的，
+                                    只要您那边对接好了以后所有功能都是自动的不需要人工进行任何的操作！
+                                </span>
+                            </span>
+                        </strong>
+                    </p>
+
+                    <p>&nbsp;</p>
+
+                    <p>
+                        <strong>
+                            <span style="color:#FF0000;">
+                                <span style="font-size:16px;">
+                                    测试账号和密码就是您现在登录的账号和密码即可！
+                                </span>
+                            </span>
+                        </strong>
+                    </p>
+
+                    <p>&nbsp;</p>
+
+                    <p>
+                        <strong>
+                            <span style="color:#FF0000;">
+                                <span style="font-size:16px; background-color:#FFFF00; padding: 5px;">
+                                    以下就是 API 对接地址：（提交方式是 POST 提交）
+                                </span>
+                            </span>
+                        </strong>
+                    </p>
+                </div>
+                <br/>
+                <div>
+                    <ul>
+                        <li> 获取快递价格地址（正式）：{$host_link}API/GetKd</li>
+                        <li> 获取快递价格地址（测试）：{$host_link}TestAPI/GetKd</li>
+                        <li> 获取流量价格地址（正式）：{$host_link}API/GetFlow</li>
+                        <li> 获取流量价格地址（测试）：{$host_link}TestAPI/GetFlow</li>
+                        <li> 获取收藏价格地址（正式）：{$host_link}API/GetSC</li>
+                        <li> 获取收藏价格地址（测试）：{$host_link}TestAPI/GetSC</li>
+                        <li> 快递单号下单地址（正式）：{$host_link}API/BuyKddh</li>
+                        <li> 快递单号下单地址（测试）：{$host_link}TestAPI/BuyKddh</li>
+                        <li> 流量收藏下单地址（正式）：{$host_link}API/BuyFlowSC</li>
+                        <li> 流量收藏下单地址（测试）：{$host_link}TestAPI/BuyFlowSC</li>
+                    </ul>
+                </div>
+                <br/><br/>
+                <div class="notice3">
+                    <p style="text-align: center;">&nbsp;</p>
+
+                    <p style="text-align: center;">
+                        <span style="font-size:26px;">
+                            <a href="javascript:void(0);">
+                                <strong>API 对接介绍文档 点击查看</strong>
+                            </a>
+                        </span>
+                    </p>
+
+                    <p style="text-align: center;">&nbsp;</p>
+
+                    <p>
+                        <span style="color:#FF0000;">
+                            <span style="font-size:16px;">
+                                提醒：通过测试 API 地址进行下单是免费，单号也是无效的只供来测试对接下单功能的。
+                                请大家在对接时放心大胆测试！
+                            </span>
+                        </span>
+                    </p>
+
+                    <p style="text-align: center;">&nbsp;</p>
+                    <p style="text-align: center;">&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('#J_copy_link').click(function () {
+        //选中ID为J_share_url的input或textarea元素标签
+        document.getElementById('J_share_url').select();
+        //将选中元素值复制到剪切板
+        document.execCommand('copy');
+        alert('推广链接复制成功');
+    });
+</script>
