@@ -44,6 +44,8 @@ class Route
     const ADMIN_ARTICLE_EDIT = 'admin/article/articleedit';
     const ADMIN_USER = 'admin/user/index';
     const ADMIN_USER_EDIT = 'admin/user/edit';
+    const ADMIN_USER_PRICE = 'admin/user/price';
+    const ADMIN_USER_FUND = 'admin/user/fund';
     const ADMIN_USER_CENTER_NAV = 'admin/user/centernav';
     const ADMIN_PRICE_EXPRESS = 'admin/price/express';
     const ADMIN_PRICE_FLOW = 'admin/price/flow';
