@@ -1,0 +1,263 @@
+.ind_wrapper {
+    width: 1002px;
+    min-height: 600px;
+    margin: auto;
+}
+
+.ind_wrapper .midd {
+    width: 1002px;
+    margin: auto;
+}
+
+.ind_wrapper .midd dl {
+    width: 998px;
+    height: 90px;
+    background-color: #3C3C3C;
+    border: 3px #f00 solid;
+    float: left;
+    margin: 0px 10px 0px auto;
+    display: inline;
+}
+
+.ind_wrapper .midd dl dt {
+    width: 340px;
+    height: 80px;
+    margin: 4px auto auto 5px;
+    float: left;
+}
+
+.ind_wrapper .midd dl dt img {
+    width: 340px;
+    height: 80px;
+}
+
+.ind_wrapper .midd dl dd {
+    width: 630px;
+    font-size: 20px;
+    margin: 4px auto auto 5px;
+    height: 80px;
+    float: left;
+}
+
+.ind_wrapper .midd dl dd .kdtit {
+    font-size: 24px;
+    font-family: simhei;
+}
+
+.ind_wrapper .midd dl dd p {
+    color: #fff;
+    margin: 5px auto auto 50px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 20px;
+}
+
+.ind_wrapper .midd dl dd p.btn_a {
+    display: inline-block;
+    width: 120px;
+    height: 25px;
+}
+
+.ind_wrapper .midd dl dd p a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.ind_wrapper .midd dl dd p i {
+    color: #fff001;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.ind_wrapper .midd dl dd p b {
+    font-style: normal;
+    color: #fe0000;
+}
+
+.ind_wrapper .midd dl dd p em {
+    font-style: normal;
+    color: #39a2d8;
+}
+
+.ind_wrapper .midd dl dd p span {
+    color: #fff;
+}
+
+.ind_wrapper .midd dl dd ul {
+    list-style-type: none;
+}
+
+.ind_wrapper .midd dl dd ul li {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+    line-height: 30px;
+}
+
+.ind_wrapper .midd dl.mr_0 {
+    margin-right: 0px;
+}
+
+.ind_wrapper .bottom {
+    width: 1002px;
+}
+
+.ind_wrapper .bottom dl {
+    width: 324px;
+    float: left;
+    display: inline;
+    border: #3C3C3C 1px solid;
+    margin: 10px 12px 0px 0px;
+}
+
+.ind_wrapper .bottom dl dt {
+    width: 324px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #3C3C3C;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    float: left;
+    color: #f00;
+}
+
+.ind_wrapper .bottom dl dt h2 {
+    float: left;
+    color: #fff;
+    text-indent: 125px;
+}
+
+.ind_wrapper .bottom dl dt a {
+    float: right;
+    color: #fff;
+    font-size: 12px;
+    color: red;
+    text-indent: 10px;
+    padding-top: 8px;
+    padding-right: 8px;
+}
+
+.ind_wrapper .bottom dl dd {
+    width: 324px;
+    height: 410px;
+    float: left;
+    margin: 6px auto auto 0px;
+}
+
+.ind_wrapper .bottom dl dd ul {
+    width: 280px;
+    margin: 8px auto auto auto;
+}
+
+.ind_wrapper .bottom dl dd ul li {
+    width: 280px;
+    height: 25px;
+    line-height: 25px;
+    background-image: url("/public/static/index/image/icon01.gif");
+    background-repeat: no-repeat;
+    background-position: 0px 10px;
+    text-indent: 10px;
+    border-bottom: 1px #cccccc dashed;
+}
+
+.ind_wrapper .bottom dl dd ul li a {
+    float: left;
+}
+
+.ind_wrapper .bottom dl dd ul li span {
+    float: right;
+}
+
+.ind_wrapper .bottom dl.mr_0 {
+    margin-right: 0px;
+}
+
+.m-r60 {
+    margin-left: 60px;
+}
+
+.m-r10 {
+    margin-left: 10px;
+}
+
+/*首页banner */
+.banner {
+    width: 1002px;
+    margin: 0 auto;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+
+.banner .bd {
+    height: auto;
+}
+
+.banner .bd li {
+    zoom: 1;
+    vertical-align: middle;
+}
+
+.banner .bd img {
+    width: 100%;
+    display: block;
+}
+
+.slideBox {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    border: 0px;
+}
+
+.slideBox .hd {
+    height: 22px;
+    overflow: hidden;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    z-index: 1;
+}
+
+.slideBox .hd ul {
+    overflow: hidden;
+    zoom: 1;
+    float: left;
+}
+
+.slideBox .hd ul li {
+    float: left;
+    margin-right: 2px;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    background: #fff;
+    cursor: pointer;
+}
+
+.slideBox .hd ul li.on {
+    background: #f00;
+    color: #fff;
+}
+
+.slideBox .bd {
+    position: relative;
+    height: 100%;
+    z-index: 0;
+}
+
+.slideBox .bd li {
+    zoom: 1;
+    vertical-align: middle;
+}
+
+.slideBox .bd img {
+    width: 100%;
+    height: 400px;
+    display: block;
+}

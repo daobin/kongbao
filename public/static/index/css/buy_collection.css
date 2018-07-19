@@ -1,0 +1,46 @@
+.flow-ul {
+    height: auto;
+}
+
+.flow-ul li {
+    /*height: 28px;
+line-height: 28px;*/
+    margin-top: 5px;
+}
+
+.flow-ul li .btn {
+    margin: 5px auto auto 220px;
+}
+
+.startul {
+    padding: 0px;
+    margin: 0;
+    margin-top: 10px;
+    height: 30px;
+    line-height: 30px;
+    border-bottom: solid 3px red
+}
+
+.startulli {
+    float: left;
+    background-color: #c7c1c1;
+    cursor: pointer;
+    margin-right: 2px;
+    padding-left: 3px;
+    padding-right: 3px;
+    text-align: center;
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-topright: 10px;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+}
+
+.startulli:hover {
+    background-color: red;
+    color: white;
+}
+
+.curr {
+    background-color: red;
+    color: white
+}

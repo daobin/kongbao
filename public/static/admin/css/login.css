@@ -1,0 +1,14 @@
+html, body{width:100%; min-width:1024px; margin:0; padding:0; border:none; color:#000;
+    background: url("/public/static/admin/images/grid-bg.jpg");
+    font-size:14px; font-weight:normal; font-family:"Microsoft YaHei", "Arial", "宋体";}
+
+.width100{width:100px !important;}
+
+#login-logo{text-align:center; margin-top:30px;}
+#login-form{width:500px; margin:0 auto; text-align:center; background:#fff; border:#abf 2px dashed;}
+#login-form>div{font-size:20px; font-weight:bold; color:#666; height:80px; line-height:80px;}
+#login-form hr{width:100%; height:1px; background:#ccc; padding:0; margin:0;}
+#login-form form{width:350px; margin:30px auto; margin-bottom:0; text-align:left;}
+#login-form form .form-group{margin-bottom:10px;}
+#login-form form input.form-control{width:300px;}
+#captcha_img{cursor:pointer;}

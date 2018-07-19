@@ -1,0 +1,18 @@
+.ulkc {
+    margin: 5px auto 25px 10px;
+}
+
+.ulkc li {
+    float: left;
+    height: 26px;
+    background-color: #C7C1C1;
+    margin-right: 2px;
+    border-radius: 3px;
+    padding: 0px 4px 0px 4px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.ulkc li.on {
+    background-color: #FF0000;
+}

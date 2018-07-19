@@ -1,0 +1,51 @@
+html, body{width:100%; min-width:1024px; margin:0; padding:0; background:#fff; color:#000; border:none;
+	font-size:14px; font-weight:normal; font-family:"Microsoft YaHei", "Arial", "宋体";}
+a{text-decoration:none !important;}
+a:focus{outline:none;}
+p, ul{display:block; margin:0; padding:0;}
+ul{list-style:none !important;}
+.clear-both{clear:both;}
+.width100{width:100px !important;}
+.width200{width:200px !important;}
+.width500{width:500px !important;}
+.width800{width: 800px !important;}
+.margin-top30{margin-top:30px !important;}
+.margin-bottom30{margin-bottom:30px !important;}
+.padding-right20{padding-right:20px !important;}
+.title{font-size:16px; font-weight:bold;}
+.display-none{display: none !important;}
+.font-size-bold{font-weight: bold !important;}
+
+#header{width:100%; border-top:3px solid #f77825; background:#2b2927; color:#fff;}
+#header .top{position:relative; height:60px; line-height:60px; border-bottom:1px solid #555;}
+#header .top .title{font-size:20px; font-weight:bold; padding-left:30px;}
+#header .top .nav-label{position:absolute; right:0; top:0;}
+#header .top .nav-nav-label span, #header .top .nav-label a{
+	display:inline-block; width:120px; height:58px; line-height:58px; 
+	color:#FFF; text-align:center;}
+#header .top .nav-label a{border-left:1px solid #3d3a37;}
+#header .top .nav-label a:hover{background:#000;}
+#header .nav-bar{background:url('../images/grid-bg.jpg'); height:40px; line-height:40px;}
+#header .nav-bar>ul>li{display:block; float:left; border-right:1px solid #555; position:relative;}
+#header .nav-bar>ul>li>a{display:inline-block;  height:40px; line-height:40px; padding:0 30px; 
+	color:#fff;}
+#header .nav-bar>ul>li>a.active{background:#333;}
+#header .nav-bar>ul>li>a:hover{background:#333;}
+#header .nav-bar>ul>li>ul{display:none; position:absolute; z-index:99; left:0; top:40px; 
+	background:#333;}
+#header .nav-bar>ul>li>ul>li>a{display:inline-block; width:200px; height:40px; line-height:40px; 
+	padding:0 30px; color:#fff;}
+#header .nav-bar>ul>li>ul>li>a:hover{background:#555;}
+
+#msg_tip p{line-height: 16px; padding: 20px;}
+#main{width:100%; min-height:80vh; margin:30px 0;}
+
+#footer{width:100%; background:#2b2927; height:30px; line-height:30px; color:#fff; 
+	text-align:center; font-size:13px;}
+#footer span{padding-right:5px;}
+#footer span.copy{position:relative; top:3px; font-size:20px;}
+
+.nav-tabs-content{padding: 30px 15px; border: 1px solid #ddd; border-top: none;
+	position: relative; top: -1px; border-radius: 0 0 5px 5px;}
+.nav-tabs-content>div{display: none;}
+.nav-tabs-content>div.active{display: block;}
