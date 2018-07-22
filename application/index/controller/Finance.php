@@ -3,6 +3,7 @@
 namespace app\index\controller;
 
 use app\common\controller\Controller;
+use app\common\service\model\user\UserFundRecord;
 
 class Finance extends Controller
 {

@@ -46,11 +46,14 @@ class Route
     const ADMIN_USER_EDIT = 'admin/user/edit';
     const ADMIN_USER_PRICE = 'admin/user/price';
     const ADMIN_USER_FUND = 'admin/user/fund';
+    const ADMIN_USER_FUND_RECORDS = 'admin/user/fundrecords';
     const ADMIN_USER_CENTER_NAV = 'admin/user/centernav';
     const ADMIN_PRICE_EXPRESS = 'admin/price/express';
     const ADMIN_PRICE_FLOW = 'admin/price/flow';
     const ADMIN_PRICE_COLLECTION = 'admin/price/collection';
     const ADMIN_PRICE_VIP = 'admin/price/vip';
+    const ADMIN_PRICE_RECHARGE = 'admin/price/recharge';
+    const ADMIN_PRICE_RECOMMEND = 'admin/price/recommend';
     const ADMIN_ORDER_EXPRESS = 'admin/order/express';
     const ADMIN_ORDER_FLOW = 'admin/order/flow';
     const ADMIN_ORDER_COLLECTION = 'admin/order/collection';

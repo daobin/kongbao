@@ -3,25 +3,22 @@
         <form method="post" autocomplete="off">
             <table class="table table-bordered">
                 <tr>
-                    <th class="text-center">序号</th>
-                    <th class="text-center">VIP类型</th>
-                    <th class="text-center width800">价格</th>
+                    <th class="text-center">会员等级</th>
+                    <th class="text-center width800">
+                        推荐奖励<span class="text-danger">（按推荐会员充值的百分比计算，最高可设置为99.99%）</span>
+                    </th>
                 </tr>
-                {notempty name="user_levels"}
-                    {volist name="user_levels" id="level"}
-                        {gt name="level.user_level_id" value="1"}
+                {volist name="user_levels" id="level"}
                 <tr>
-                    <td class="text-center">{$key}</td>
                     <td class="text-center">{$level.level_name}</td>
-                    <td class="text-center">
-                        <input type="text" class="form-control" maxlength="8"
-                               name="level_prices[{$level.user_level_id}]"
-                               value="{$level.level_price|number_format=###,2,'.',''}" />
+                    <td class="text-center input-group">
+                        <input type="text" class="form-control" maxlength="5"
+                               name="recommend_prices[{$level.user_level_id}]"
+                               value="{$level.recommend_price|number_format=###,2,'.',''}" />
+                        <span class="input-group-addon">%</span>
                     </td>
                 </tr>
-                        {/gt}
-                    {/volist}
-                {/notempty}
+                {/volist}
             </table>
             {notempty name="user_levels"}
             <div class="form-group">

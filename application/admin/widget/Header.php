@@ -43,10 +43,6 @@ class Header extends Widget
                     'url' => url(Route::ADMIN_WEBSITE)
                 ],
                 [
-                    'name' => '会员中心左侧栏',
-                    'url' => url(Route::ADMIN_USER_CENTER_NAV)
-                ],
-                [
                     'name' => '推荐导航',
                     'url' => url(Route::ADMIN_RECOMMEND_NAVIGATION)
                 ],
@@ -89,12 +85,12 @@ class Header extends Widget
                     'url' => url(Route::ADMIN_USER)
                 ],
                 [
-                    'name' => '充值记录',
-                    'url' => ''
+                    'name' => '左侧导航',
+                    'url' => url(Route::ADMIN_USER_CENTER_NAV)
                 ],
                 [
-                    'name' => '推荐奖励',
-                    'url' => ''
+                    'name' => '奖罚记录',
+                    'url' => url(Route::ADMIN_USER_FUND_RECORDS)
                 ]
             ]
         ];
@@ -120,6 +116,14 @@ class Header extends Widget
                 [
                     'name' => 'VIP价格',
                     'url' => url(Route::ADMIN_PRICE_VIP)
+                ],
+                [
+                    'name' => '充值奖励',
+                    'url' => url(Route::ADMIN_PRICE_RECHARGE)
+                ],
+                [
+                    'name' => '推荐奖励',
+                    'url' => url(Route::ADMIN_PRICE_RECOMMEND)
                 ],
             ]
         ];

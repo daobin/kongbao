@@ -311,6 +311,30 @@ class User extends Controller
         return $this->fetch();
     }
 
+    public function fundRecords(){
+        $where = ['group' => 1];
+        $userAccount = input('get.user_account/s', '');
+        if($userAccount != ''){
+            $user = UserModel::getByUserAccount($userAccount);
+            if(!empty($user)){
+                $where['user_id'] = $user->user_id;
+            }else{
+                $where['user_id'] = 0;
+            }
+        }
+
+        $pageQuery = input('get.');
+        if(isset($pageQuery['page'])){
+            unset($pageQuery['page']);
+        }
+        $this->assign('fund_records', UserFundRecord::where($where)
+            ->order('user_fund_record_id', 'desc')->paginate(null, false, [
+                'query' => $pageQuery
+            ]));
+
+        return $this->fetch();
+    }
+
     public function centerNav()
     {
         if (request()->isPost()) {

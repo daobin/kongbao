@@ -7,6 +7,7 @@ use app\common\constant\Session;
 use app\common\controller\Controller;
 use app\common\service\api\Paikukb;
 use app\common\service\model\configuration\Configuration;
+use app\common\service\model\configuration\RechargeReward;
 use app\common\service\model\product\Price as PriceMoel;
 use app\common\service\model\user\UserLevel;
 use think\Db;
@@ -483,4 +484,111 @@ class Price extends Controller
         $this->redirect(Route::ADMIN_PRICE_VIP);
     }
 
+    public function recharge()
+    {
+        if (request()->isPost()) {
+            $this->rechargeSave();
+        }
+
+        $this->assign('recharge_rewards', RechargeReward::order('recharge_price', 'asc')
+            ->select());
+
+        return $this->fetch();
+    }
+
+    private function rechargeSave()
+    {
+        $recharges = input('post.recharges/a', []);
+        $rewards = input('post.rewards/a', []);
+
+        if (empty($recharges)) {
+            session(Session::ERROR_MSG, '请新增充值奖励');
+            $this->redirect(url(Route::ADMIN_PRICE_RECHARGE));
+        }
+
+        $inDatas = [];
+        $upDatas = [];
+        foreach ($recharges as $id => $recharge) {
+            $recharge = (float)$recharge;
+            $reward = (float)$rewards[$id];
+            if ($id == '__I__' || $recharge <= 0 || $reward <= 0) {
+                continue;
+            }
+
+            if (strpos($id, 'i_') !== false) {
+                $inDatas[] = [
+                    'recharge_price' => $recharge,
+                    'reward_price' => $reward,
+                    'operator' => session('admin.account')
+                ];
+            } else {
+                $upDatas[] = [
+                    'recharge_reward_id' => $id,
+                    'recharge_price' => $recharge,
+                    'reward_price' => $reward,
+                    'operator' => session('admin.account')
+                ];
+            }
+        }
+
+        if (empty($inDatas) && empty($upDatas)) {
+            session(Session::ERROR_MSG, '请新增充值奖励');
+            $this->redirect(url(Route::ADMIN_PRICE_RECHARGE));
+        }
+
+        $rechargeRewardModel = new RechargeReward();
+        if (!empty($inDatas)) {
+            $rechargeRewardModel->saveAll($inDatas);
+        }
+        if (!empty($upDatas)) {
+            $rechargeRewardModel->saveAll($upDatas);
+        }
+
+        session(Session::SUCCESS_MSG, '保存成功');
+        $this->redirect(Route::ADMIN_PRICE_RECHARGE);
+    }
+
+    public function recommend()
+    {
+        if (request()->isPost()) {
+            $this->recommendSave();
+        }
+
+        $this->assign('user_levels', UserLevel::all());
+        return $this->fetch();
+    }
+
+    private function recommendSave()
+    {
+        $recommendPrices = input('post.recommend_prices/a', []);
+        if (empty($recommendPrices)) {
+            session(Session::ERROR_MSG, '提交数据无效，请刷新页面重试');
+            $this->redirect(Route::ADMIN_PRICE_RECOMMEND);
+        }
+
+        Db::startTrans();
+        try {
+            foreach ($recommendPrices as $id => $price) {
+                $price = (float)$price;
+                if ($price <= 0) {
+                    $price = 0;
+                } else if ($price >= 99.99) {
+                    $price = 99.99;
+                }
+
+                UserLevel::update([
+                    'recommend_price' => $price,
+                    'operator' => session('admin.account')
+                ], ['user_level_id' => (int)$id]);
+            }
+
+            session(Session::SUCCESS_MSG, '保存成功');
+            Db::commit();
+        } catch (\Exception $e) {
+            session(Session::ERROR_MSG, '保存失败');
+            Db::rollback();
+        }
+
+        $this->redirect(Route::ADMIN_PRICE_RECOMMEND);
+    }
 }

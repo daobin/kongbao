@@ -6,6 +6,10 @@ use app\common\service\Model;
 
 class UserFundRecord extends Model
 {
+    public function user(){
+        return $this->belongsTo('User');
+    }
+
     public function getTypeCodeAttr($val, $data)
     {
         return (int)$data['type'] == 2 ? '-' : '';
@@ -25,15 +29,15 @@ class UserFundRecord extends Model
     public static function getGroups()
     {
         return [
-            //1, 2, 3
+            //0, 1, 2
             '', '官方', '充值',
-            //4, 5, 6
+            //3, 4, 5
             '购买空包', '购买流量', '购买收藏',
-            //7, 8, 9
+            //6, 7, 8
             '空包退款', '流量退款', '收藏退款',
-            //10, 11, 12
+            //9, 10, 11
             '升级VIP会员', '升级代理会员', '推荐奖励',
-            //13, 14, 15
+            //12, 13, 14
             '充值奖励', '', '',
         ];
     }

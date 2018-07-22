@@ -167,8 +167,6 @@ class Order extends Controller
             session(Session::SUCCESS_MSG, '提交选择快递至总站操作成功');
             $this->redirect(Route::ADMIN_ORDER_EXPRESS, ['title_id' => $titleId]);
         }
-
-
     }
 
     public function flow()
@@ -246,6 +244,22 @@ class Order extends Controller
         return $this->fetch();
     }
 
+    public function postFlow(){
+        $titleId = input('post.title_id/d', 0);
+        if (!input('?post.title_id') || $titleId <= 0) {
+            session(Session::ERROR_MSG, '请选择流量');
+            $this->redirect(Route::ADMIN_ORDER_FLOW);
+        }
+
+        $orders = OrderFlow::where([
+            'title_id' => $titleId, 'status' => 1
+        ])->field(true)->order('order_flow_id', 'desc')->select();
+        if (empty($orders)) {
+            session(Session::ERROR_MSG, '选择流量下没有数据');
+            $this->redirect(Route::ADMIN_ORDER_FLOW, ['title_id' => $titleId]);
+        }
+    }
+
     public function collection()
     {
         $activeData = input('get.active_data', '');
@@ -319,5 +333,21 @@ class Order extends Controller
         $this->assign('prices', $prices);
 
         return $this->fetch();
+    }
+
+    public function postCollection(){
+        $titleId = input('post.title_id/d', 0);
+        if (!input('?post.title_id') || $titleId <= 0) {
+            session(Session::ERROR_MSG, '请选择收藏');
+            $this->redirect(Route::ADMIN_ORDER_COLLECTION);
+        }
+
+        $orders = OrderCollection::where([
+            'title_id' => $titleId, 'status' => 1
+        ])->field(true)->order('order_collection_id', 'desc')->select();
+        if (empty($orders)) {
+            session(Session::ERROR_MSG, '选择收藏下没有数据');
+            $this->redirect(Route::ADMIN_ORDER_COLLECTION, ['title_id' => $titleId]);
+        }
     }
 }

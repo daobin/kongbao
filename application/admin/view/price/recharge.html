@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row">
+        <form method="post" autocomplete="off" id="J_Recharge_Form">
+            <table class="table table-bordered">
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">充值金额</th>
+                    <th class="text-center">奖励金额</th>
+                </tr>
+                {volist name="recharge_rewards" id="recharge_reward"}
+                    {assign name="rr_id" value="$recharge_reward.recharge_reward_id"}
+                <tr>
+                    <td class="text-center">{$rr_id}</td>
+                    <td class="text-center">
+                        <input type="text" class="form-control" maxlength="8"
+                               value="{$recharge_reward.recharge_price}"
+                               name="recharges[{$rr_id}]" />
+                    </td>
+                    <td class="text-center">
+                        <input type="text" class="form-control" maxlength="8"
+                               value="{$recharge_reward.reward_price}"
+                               name="rewards[{$rr_id}]" />
+                    </td>
+                </tr>
+                {/volist}
+                <tr id="J_Recharge_Tpl" class="display-none">
+                    <td class="text-center">#</td>
+                    <td class="text-center">
+                        <input type="text" class="form-control" maxlength="8" name="recharges[__I__]" />
+                    </td>
+                    <td class="text-center">
+                        <input type="text" class="form-control" maxlength="8" name="rewards[__I__]" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div class="row margin-top30">
+        <a href="javascript:void(0);" class="btn btn-primary pull-left" id="J_Recharge_Save">保存</a>
+        <a href="javascript:void(0);" class="btn btn-info pull-right J_Add_Recharge">新增充值奖励</a>
+    </div>
+</div>
+<script>
+    var add_index = 0;
+    $('.J_Add_Recharge').click(function(){
+        var tr_html = '<tr>' + ($('#J_Recharge_Tpl').html()) + '</tr>';
+        tr_html = tr_html.replace(/__I__/g, 'i_' + add_index);
+        $('#J_Recharge_Form table').append(tr_html);
+        add_index++;
+    });
+
+    $('#J_Recharge_Save').click(function(){
+        $('#J_Recharge_Form').submit();
+    });
+</script>

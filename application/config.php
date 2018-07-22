@@ -256,5 +256,5 @@ return [
 
     //公共静态资源URI
     '__URI_PUB_STATIC__' => '/public/static/',
-    '__TIMESTAMP__' => '?201807151000',
+    '__TIMESTAMP__' => '?201807221800',
 ];

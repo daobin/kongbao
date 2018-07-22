@@ -8,18 +8,25 @@
         </ul>
         <div class="nav-tabs-content J_nav_tab_content">
             <div class="active">
-                <div class="form-group">
-                    <select class="form-control width500" name="title_id" id="J_flow_select">
-                        <option value="0">--请选择流量--</option>
-                        {volist name="prices" id="price"}
-                            {if condition="(int)$title_id == (int)$price['title_id']"}
-                        <option value="{$price.title_id}" selected>{$price.title}</option>
-                            {else/}
-                        <option value="{$price.title_id}">{$price.title}</option>
-                            {/if}
-                        {/volist}
-                    </select>
-                </div>
+                <form class="form-inline" method="post" action="{:url('admin/order/postflow')}">
+                    <div class="form-group">
+                        <select class="form-control width500" name="title_id" id="J_flow_select">
+                            <option value="0">--请选择流量--</option>
+                            {volist name="prices" id="price"}
+                                {if condition="(int)$title_id == (int)$price['title_id']"}
+                            <option value="{$price.title_id}" selected>{$price.title}</option>
+                                {else/}
+                            <option value="{$price.title_id}">{$price.title}</option>
+                                {/if}
+                            {/volist}
+                        </select>
+                    </div>
+                    {if condition="$active_data == '' || $active_data == 'sale'"}
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-success" value="提交选择流量至总站" />
+                    </div>
+                    {/if}
+                </form>
                 <form class="form-inline margin-top30">
                     <div class="form-group">
                         <select name="s_key" class="form-control width200">

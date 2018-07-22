@@ -10,3 +10,13 @@
 // +----------------------------------------------------------------------
 
 // 应用公共文件
+
+//判断一个格式化时间是否合法
+function chk_date_format($datetime, $format = 'Y-m-d H:i:s'){
+    $unix_time = strtotime($datetime);
+    if(empty($unix_time)){
+        return false;
+    }
+
+    return date($format, $unix_time) == $datetime;
+}

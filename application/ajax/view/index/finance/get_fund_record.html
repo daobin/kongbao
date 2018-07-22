@@ -1,0 +1,14 @@
+{volist name="fund_records" id="fund_record"}
+<tr class="pageBox J_fund_record">
+    <td style="text-align: left;">{$fund_record.detail}</td>
+    <td>{$fund_record.group_text}</td>
+    <td>{$fund_record.price}</td>
+    <td>{$fund_record.balance}</td>
+    <td>{$fund_record.gmt_create}</td>
+</tr>
+{/volist}
+{notempty name="fund_records"}
+<tr class="J_fund_record">
+    <td colspan="5">{$fund_records->render()}</td>
+</tr>
+{/notempty}

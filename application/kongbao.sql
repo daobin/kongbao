@@ -31,7 +31,7 @@ CREATE TABLE `kb_admin` (
 
 /*Data for the table `kb_admin` */
 
-insert  into `kb_admin`(`admin_id`,`admin_group_id`,`account`,`password`,`gmt_login`,`gmt_password`,`gmt_create`,`gmt_modify`,`operator`) values (1,1,'ddpm','$2y$10$S3UrJPMF1mzgQGi4ahdpDeS6HTl.GfZJFARVoCSVkFnAASbiftbWi','2018-07-17 18:51:51',NULL,'2018-06-02 16:22:15','2018-07-17 18:51:51',''),(5,1,'dbtests','$2y$10$oqbJmTOsxmXzvJ642kXu1exJYBxxYR/eCfqKDKgen.GY5g38.BNpi',NULL,NULL,'0000-00-00 00:00:00','2018-06-05 19:53:53',''),(7,1,'dbtest','$2y$10$0voJololQ7eKjYYXPwiNOub2Bob8AbO3JlTILJbXlbmaTDXyRis.y',NULL,NULL,'2018-06-05 20:25:54','2018-06-05 20:26:58','ddpm');
+insert  into `kb_admin`(`admin_id`,`admin_group_id`,`account`,`password`,`gmt_login`,`gmt_password`,`gmt_create`,`gmt_modify`,`operator`) values (1,1,'ddpm','$2y$10$S3UrJPMF1mzgQGi4ahdpDeS6HTl.GfZJFARVoCSVkFnAASbiftbWi','2018-07-22 13:35:18',NULL,'2018-06-02 16:22:15','2018-07-22 13:35:18',''),(5,1,'dbtests','$2y$10$oqbJmTOsxmXzvJ642kXu1exJYBxxYR/eCfqKDKgen.GY5g38.BNpi',NULL,NULL,'0000-00-00 00:00:00','2018-06-05 19:53:53',''),(7,1,'dbtest','$2y$10$0voJololQ7eKjYYXPwiNOub2Bob8AbO3JlTILJbXlbmaTDXyRis.y',NULL,NULL,'2018-06-05 20:25:54','2018-06-05 20:26:58','ddpm');
 
 /*Table structure for table `kb_admin_group` */
 
@@ -134,7 +134,7 @@ CREATE TABLE `kb_category` (
 
 /*Data for the table `kb_category` */
 
-insert  into `kb_category`(`category_id`,`category_name`,`status`,`sort`,`gmt_create`,`gmt_modify`,`operator`) values (1,'PHP技术',1,0,'2018-06-09 19:46:11','2018-06-09 20:02:28','ddpm'),(2,'CSS',1,1,'2018-06-09 19:55:00','2018-06-09 20:02:28','ddpm'),(3,'HTML',0,2,'2018-06-09 19:55:00','2018-06-09 20:02:28','ddpm');
+insert  into `kb_category`(`category_id`,`category_name`,`status`,`sort`,`gmt_create`,`gmt_modify`,`operator`) values (1,'PHP技术',1,0,'2018-06-09 19:46:11','2018-07-22 17:05:43','ddpm'),(2,'CSS',1,1,'2018-06-09 19:55:00','2018-07-22 17:05:43','ddpm'),(3,'HTML',0,2,'2018-06-09 19:55:00','2018-07-22 17:05:43','ddpm');
 
 /*Table structure for table `kb_city` */
 
@@ -390,7 +390,25 @@ CREATE TABLE `kb_qq` (
 
 /*Data for the table `kb_qq` */
 
-insert  into `kb_qq`(`qq_id`,`qq_number`,`name`,`status`,`sort`,`gmt_create`,`gmt_modify`,`operator`) values (1,'1002214592','订单售后',1,2,'2018-06-18 12:05:40','2018-06-30 19:03:04','ddpm'),(2,'1002215487','空包售前',1,0,'2018-06-18 12:05:40','2018-06-30 19:03:04','ddpm');
+insert  into `kb_qq`(`qq_id`,`qq_number`,`name`,`status`,`sort`,`gmt_create`,`gmt_modify`,`operator`) values (1,'1002214592','订单售后',1,2,'2018-06-18 12:05:40','2018-07-22 17:06:23','ddpm'),(2,'1002215487','空包售前',1,0,'2018-06-18 12:05:40','2018-07-22 17:06:23','ddpm');
+
+/*Table structure for table `kb_recharge_reward` */
+
+DROP TABLE IF EXISTS `kb_recharge_reward`;
+
+CREATE TABLE `kb_recharge_reward` (
+  `recharge_reward_id` int(11) NOT NULL AUTO_INCREMENT,
+  `recharge_price` decimal(8,2) NOT NULL COMMENT '充值金额',
+  `reward_price` decimal(8,2) NOT NULL COMMENT '奖励金额',
+  `gmt_create` datetime NOT NULL,
+  `gmt_modify` datetime NOT NULL,
+  `operator` varchar(32) NOT NULL DEFAULT '',
+  PRIMARY KEY (`recharge_reward_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='充值奖励';
+
+/*Data for the table `kb_recharge_reward` */
+
+insert  into `kb_recharge_reward`(`recharge_reward_id`,`recharge_price`,`reward_price`,`gmt_create`,`gmt_modify`,`operator`) values (1,'1000.00','3.00','2018-07-22 17:14:37','2018-07-22 17:19:27','ddpm'),(2,'100.00','0.10','2018-07-22 17:14:37','2018-07-22 17:19:27','ddpm'),(3,'500.00','1.00','2018-07-22 17:14:37','2018-07-22 17:19:27','ddpm'),(4,'50000.00','10.00','2018-07-22 17:19:27','2018-07-22 17:19:27','ddpm');
 
 /*Table structure for table `kb_recommend_navigation` */
 
@@ -491,7 +509,7 @@ CREATE TABLE `kb_user` (
 
 /*Data for the table `kb_user` */
 
-insert  into `kb_user`(`user_id`,`user_account`,`user_password`,`user_level_id`,`email_address`,`telephone`,`qq_number`,`balance`,`express_fixed_profit`,`recommend_user_id`,`register_ip`,`login_ip`,`gmt_create`,`gmt_modify`,`gmt_login`,`operator`) values (1,'道斌','$2y$10$eCYmx4.53YcSUveUJIzR..z8E0WUtpPvLN8UmXxlrWbfaN3/7EvkO',3,'Saf@adfa.com','18711','121221212','110.00','5.35',4,'','','2018-06-10 16:03:01','2018-07-19 14:06:01',NULL,'ddpm'),(3,'道斌赖','$2y$10$pNsrpc3PLxb/O34fyLUC/eRv8VZGL/fpdInLE/LfpleCWD5oi2m1e',1,'1002214592@qq.com','','1002214592','0.00','0.00',4,'','','2018-07-01 17:35:53','2018-07-01 17:35:53',NULL,''),(4,'赖道斌','$2y$10$trtHCjGjWCgShV7kc.0sMek8rQuxkBHy3QnifiIDv7g.1AAlpuKai',2,'1002214592@qq.com','','1002214592','38.27','3.00',0,'','127.0.0.1','2018-07-01 18:02:35','2018-07-19 14:31:15','2018-07-17 19:07:12','ddpm'),(6,'DBLai','$2y$10$iIQ5K0RuDLjP/AXRFnnUTOQfDhfX3fF.cimDF4XxCqoe68mXnnXC.',1,'100221@qq.com','','100221','0.00','0.00',4,'127.0.0.1','127.0.0.1','2018-07-01 18:29:31','2018-07-01 18:42:15','2018-07-01 18:42:15',''),(7,'人生之乐于','$2y$10$Uy1GtAF6DjZt00qq6sJV7.IHMNO87CiZLvuRSWUC29RvRN6L5jZ8.',1,'591782046@qq.com','','591782046','0.00','0.00',4,'127.0.0.1','','2018-07-03 21:01:41','2018-07-03 21:01:41',NULL,'');
+insert  into `kb_user`(`user_id`,`user_account`,`user_password`,`user_level_id`,`email_address`,`telephone`,`qq_number`,`balance`,`express_fixed_profit`,`recommend_user_id`,`register_ip`,`login_ip`,`gmt_create`,`gmt_modify`,`gmt_login`,`operator`) values (1,'道斌','$2y$10$eCYmx4.53YcSUveUJIzR..z8E0WUtpPvLN8UmXxlrWbfaN3/7EvkO',3,'Saf@adfa.com','18711','121221212','110.00','5.35',4,'','','2018-06-10 16:03:01','2018-07-19 14:06:01',NULL,'ddpm'),(3,'道斌赖','$2y$10$pNsrpc3PLxb/O34fyLUC/eRv8VZGL/fpdInLE/LfpleCWD5oi2m1e',1,'1002214592@qq.com','','1002214592','0.00','0.00',4,'','','2018-07-01 17:35:53','2018-07-01 17:35:53',NULL,''),(4,'赖道斌','$2y$10$trtHCjGjWCgShV7kc.0sMek8rQuxkBHy3QnifiIDv7g.1AAlpuKai',2,'1002214592@qq.com','','1002214592','38.27','3.00',0,'','127.0.0.1','2018-07-01 18:02:35','2018-07-22 13:48:56','2018-07-22 13:48:56','ddpm'),(6,'DBLai','$2y$10$iIQ5K0RuDLjP/AXRFnnUTOQfDhfX3fF.cimDF4XxCqoe68mXnnXC.',1,'100221@qq.com','','100221','0.00','0.00',4,'127.0.0.1','127.0.0.1','2018-07-01 18:29:31','2018-07-01 18:42:15','2018-07-01 18:42:15',''),(7,'人生之乐于','$2y$10$Uy1GtAF6DjZt00qq6sJV7.IHMNO87CiZLvuRSWUC29RvRN6L5jZ8.',1,'591782046@qq.com','','591782046','0.00','0.00',4,'127.0.0.1','','2018-07-03 21:01:41','2018-07-03 21:01:41',NULL,'');
 
 /*Table structure for table `kb_user_fund_record` */
 
@@ -525,6 +543,7 @@ CREATE TABLE `kb_user_level` (
   `user_level_id` tinyint(2) NOT NULL AUTO_INCREMENT,
   `level_name` varchar(16) NOT NULL,
   `level_price` decimal(8,2) NOT NULL DEFAULT '0.00' COMMENT '会员价',
+  `recommend_price` decimal(4,2) NOT NULL DEFAULT '0.00' COMMENT '推荐奖励，推荐会员充值的百分比',
   `gmt_create` datetime NOT NULL,
   `gmt_modify` datetime NOT NULL,
   `operator` varchar(32) NOT NULL DEFAULT '',
@@ -533,7 +552,7 @@ CREATE TABLE `kb_user_level` (
 
 /*Data for the table `kb_user_level` */
 
-insert  into `kb_user_level`(`user_level_id`,`level_name`,`level_price`,`gmt_create`,`gmt_modify`,`operator`) values (1,'普通会员','0.00','2018-06-10 16:06:35','2018-06-10 16:06:38',''),(2,'VIP会员','10.00','2018-06-10 16:06:45','2018-06-21 15:56:29','ddpm'),(3,'代理会员','90.00','2018-06-10 16:06:57','2018-06-21 15:56:29','ddpm');
+insert  into `kb_user_level`(`user_level_id`,`level_name`,`level_price`,`recommend_price`,`gmt_create`,`gmt_modify`,`operator`) values (1,'普通会员','0.00','5.00','2018-06-10 16:06:35','2018-07-22 15:25:28','ddpm'),(2,'VIP会员','10.00','5.50','2018-06-10 16:06:45','2018-07-22 15:25:28','ddpm'),(3,'代理会员','90.00','6.00','2018-06-10 16:06:57','2018-07-22 15:25:28','ddpm');
 
 /*Table structure for table `kb_user_price` */
 
