@@ -64,7 +64,7 @@ class Finance extends Ajax
 
         $this->assign('fund_records', UserFundRecord::where($where)->field(true)
             ->order('user_fund_record_id', 'desc')
-            ->paginate(10, false, ['type' => 'kongbao']));
+            ->paginate(null, false, ['type' => 'kongbao']));
 
         $this->echoDataFormatToJson([
             'status' => 'success',

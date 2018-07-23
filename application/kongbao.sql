@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v12.09 (64 bit)
-MySQL - 5.5.53 : Database - kongbao_com
+MySQL - 5.7.21 : Database - kongbao_com
 *********************************************************************
 */
 
@@ -509,7 +509,7 @@ CREATE TABLE `kb_user` (
 
 /*Data for the table `kb_user` */
 
-insert  into `kb_user`(`user_id`,`user_account`,`user_password`,`user_level_id`,`email_address`,`telephone`,`qq_number`,`balance`,`express_fixed_profit`,`recommend_user_id`,`register_ip`,`login_ip`,`gmt_create`,`gmt_modify`,`gmt_login`,`operator`) values (1,'道斌','$2y$10$eCYmx4.53YcSUveUJIzR..z8E0WUtpPvLN8UmXxlrWbfaN3/7EvkO',3,'Saf@adfa.com','18711','121221212','110.00','5.35',4,'','','2018-06-10 16:03:01','2018-07-19 14:06:01',NULL,'ddpm'),(3,'道斌赖','$2y$10$pNsrpc3PLxb/O34fyLUC/eRv8VZGL/fpdInLE/LfpleCWD5oi2m1e',1,'1002214592@qq.com','','1002214592','0.00','0.00',4,'','','2018-07-01 17:35:53','2018-07-01 17:35:53',NULL,''),(4,'赖道斌','$2y$10$trtHCjGjWCgShV7kc.0sMek8rQuxkBHy3QnifiIDv7g.1AAlpuKai',2,'1002214592@qq.com','','1002214592','38.27','3.00',0,'','127.0.0.1','2018-07-01 18:02:35','2018-07-22 13:48:56','2018-07-22 13:48:56','ddpm'),(6,'DBLai','$2y$10$iIQ5K0RuDLjP/AXRFnnUTOQfDhfX3fF.cimDF4XxCqoe68mXnnXC.',1,'100221@qq.com','','100221','0.00','0.00',4,'127.0.0.1','127.0.0.1','2018-07-01 18:29:31','2018-07-01 18:42:15','2018-07-01 18:42:15',''),(7,'人生之乐于','$2y$10$Uy1GtAF6DjZt00qq6sJV7.IHMNO87CiZLvuRSWUC29RvRN6L5jZ8.',1,'591782046@qq.com','','591782046','0.00','0.00',4,'127.0.0.1','','2018-07-03 21:01:41','2018-07-03 21:01:41',NULL,'');
+insert  into `kb_user`(`user_id`,`user_account`,`user_password`,`user_level_id`,`email_address`,`telephone`,`qq_number`,`balance`,`express_fixed_profit`,`recommend_user_id`,`register_ip`,`login_ip`,`gmt_create`,`gmt_modify`,`gmt_login`,`operator`) values (1,'道斌','$2y$10$eCYmx4.53YcSUveUJIzR..z8E0WUtpPvLN8UmXxlrWbfaN3/7EvkO',3,'Saf@adfa.com','18711','121221212','110.00','5.35',4,'','','2018-06-10 16:03:01','2018-07-19 14:06:01',NULL,'ddpm'),(3,'道斌赖','$2y$10$pNsrpc3PLxb/O34fyLUC/eRv8VZGL/fpdInLE/LfpleCWD5oi2m1e',1,'1002214592@qq.com','','1002214592','0.00','0.00',4,'','','2018-07-01 17:35:53','2018-07-01 17:35:53',NULL,''),(4,'赖道斌','$2y$10$trtHCjGjWCgShV7kc.0sMek8rQuxkBHy3QnifiIDv7g.1AAlpuKai',2,'1002214592@qq.com','','1002214592','38.27','3.00',0,'','127.0.0.1','2018-07-01 18:02:35','2018-07-23 13:47:18','2018-07-23 13:47:18','ddpm'),(6,'DBLai','$2y$10$iIQ5K0RuDLjP/AXRFnnUTOQfDhfX3fF.cimDF4XxCqoe68mXnnXC.',1,'100221@qq.com','','100221','0.00','0.00',4,'127.0.0.1','127.0.0.1','2018-07-01 18:29:31','2018-07-01 18:42:15','2018-07-01 18:42:15',''),(7,'人生之乐于','$2y$10$Uy1GtAF6DjZt00qq6sJV7.IHMNO87CiZLvuRSWUC29RvRN6L5jZ8.',1,'591782046@qq.com','','591782046','0.00','0.00',4,'127.0.0.1','','2018-07-03 21:01:41','2018-07-03 21:01:41',NULL,'');
 
 /*Table structure for table `kb_user_fund_record` */
 

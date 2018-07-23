@@ -54,7 +54,7 @@ class Address extends Ajax
             $this->assign('address', ShippingAddress::scope('list', $condition)->select());
         } else {
             $this->assign('address', ShippingAddress::scope('list', $condition)
-                ->paginate(1, false, ['type' => 'kongbao']));
+                ->paginate(null, false, ['type' => 'kongbao']));
         }
 
         $this->echoDataFormatToJson([

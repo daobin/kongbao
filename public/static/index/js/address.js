@@ -40,7 +40,7 @@ var Address = Address || {};
     };
 
     addr.get_shipping_address = function (params, show_elem) {
-        if ($('.J_address').length > 0) {
+        if ($('#J_address_list').length > 0) {
             $('.J_address').remove();
             show_elem.children('table').append('<tr><td colspan="5" style="text-align: center;">' +
                 '<img src="/public/static/index/image/loading.gif" />' +
